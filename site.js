@@ -12,20 +12,23 @@ var DISCORD = "https://discord.gg/QUtsNJUvNV";
     document.querySelectorAll("[data-discord-live]").forEach(function (el) { el.hidden = true; });
   }
 
-  // The hero video has a light and a dark version, like the screenshots.
-  var v = document.getElementById("reel");
-  if (v && window.matchMedia) {
+  // Videos with a light and a dark version, like the screenshots.
+  var vids = document.querySelectorAll("video[data-themed]");
+  if (vids.length && window.matchMedia) {
     var mq = window.matchMedia("(prefers-color-scheme: dark)");
+    var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var pick = function () {
-      var dark = mq.matches, want = dark ? "img/backroom-stand-dark.mp4" : "img/backroom-stand.mp4";
-      if (v.currentSrc && v.currentSrc.indexOf(want) !== -1) return;
-      v.poster = dark ? "img/backroom-stand-dark-poster.webp" : "img/backroom-stand-poster.webp";
-      v.muted = true; v.src = want; v.load(); var p = v.play(); if (p && p.catch) p.catch(function () {});
+      vids.forEach(function (v) {
+        var base = "img/" + v.getAttribute("data-themed") + (mq.matches ? "-dark" : "");
+        if (v.currentSrc && v.currentSrc.indexOf(base + ".mp4") !== -1) return;
+        v.poster = base + "-poster.webp";
+        v.muted = true; v.src = base + ".mp4"; v.load();
+        if (still) { v.removeAttribute("autoplay"); v.controls = true; return; }
+        var p = v.play(); if (p && p.catch) p.catch(function () {});
+      });
     };
     pick();
     if (mq.addEventListener) mq.addEventListener("change", pick);
-    var still = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (still.matches) { v.removeAttribute("autoplay"); v.pause(); v.controls = true; }
   }
 })();
 

@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#F4EDE1" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#15110E" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="Crate Music Library">
-<meta property="og:description" content="Music as personal as your collection. iPhone and iPad.">
+<meta property="og:description" content="Your music is personal. Your app should be too. iPhone and iPad.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -34,7 +34,7 @@
   <section class="hero" id="top">
     <div>
       <div class="label">Crate Music Library · iPhone &amp; iPad</div>
-      <h1>Music as personal as <em>your collection.</em></h1>
+      <h1>Your music is personal. <em>Your app should be too.</em></h1>
       <p class="lede">Crate turns your Spotify or Apple Music library into a room full of records you actually own: flip through them, ask for a playlist in plain words, make mixtapes, and see every play you've ever made.</p>
       <div class="pills">
         <span class="pill solid"><span class="dot"></span>Coming to the App Store</span>
@@ -48,7 +48,7 @@
     </div>
   </section>
   <figure class="reel">
-    <video id="reel" autoplay muted loop playsinline preload="metadata" width="1400" height="1074"
+    <video id="reel" data-themed="backroom-stand" autoplay muted loop playsinline preload="metadata" width="1400" height="1074"
            poster="img/backroom-stand-poster.webp" aria-label="The Back Room on iPad: records going onto the stand from the ledge of this week's reviews, then the players on your records">
       <source src="img/backroom-stand.mp4" type="video/mp4">
     </video>
@@ -208,13 +208,20 @@
       </div>
       <p class="soft" style="max-width:40ch;margin:0;color:var(--ink-2)">Each look has its own colours and its own typeface, checked for contrast in light and dark. Or let Crate change look every day.</p>
     </div>
+    <figure class="looks-reel">
+      <video data-themed="home-looks" autoplay muted loop playsinline preload="metadata" width="560" height="1144"
+             poster="img/home-looks-poster.webp" aria-label="Crate's Home on iPhone scrolling from top to bottom while the look changes: Record Shop, Jazz Club, Punk Zine, Soul Revue, Late Night, Industrial and New Age">
+        <source src="img/home-looks.mp4" type="video/mp4">
+      </video>
+      <figcaption>Home from top to bottom (Pick Up, Album of the Day, Right Now, Dig the Crate, the Back Room and more), changing look as it goes.</figcaption>
+    </figure>
     <div class="rack">
       <figure><img src="img/iphone-home.webp" width="560" height="1145" alt="Record Shop look" loading="lazy"><figcaption><b>Record Shop</b><span>Cream paper, raspberry and mustard</span></figcaption></figure>
       <figure><img src="img/iphone-look-jazzClub.webp" width="560" height="1145" alt="Jazz Club look in dark mode" loading="lazy"><figcaption><b>Jazz Club</b><span>Navy and brass, like an old sleeve</span></figcaption></figure>
       <figure><img src="img/iphone-look-punkZine.webp" width="560" height="1145" alt="Punk Zine look" loading="lazy"><figcaption><b>Punk Zine</b><span>Photocopy black with a hot-pink tear</span></figcaption></figure>
       <figure><img src="img/iphone-look-soulRevue.webp" width="560" height="1145" alt="Soul Revue look" loading="lazy"><figcaption><b>Soul Revue</b><span>Warm '70s orange, brown and gold</span></figcaption></figure>
       <figure><img src="img/iphone-look-lateNight.webp" width="560" height="1145" alt="Late Night look in dark mode" loading="lazy"><figcaption><b>Late Night</b><span>Purple and teal, FM after midnight</span></figcaption></figure>
-      <figure><img src="img/iphone-look-industrial.webp" width="560" height="1145" alt="Industrial look" loading="lazy"><figcaption><b>Industrial</b><span>Concrete, steel and hazard yellow</span></figcaption></figure>
+      <figure><img src="img/iphone-look-industrial.webp" width="560" height="1145" alt="Industrial look in dark mode" loading="lazy"><figcaption><b>Industrial</b><span>Concrete, steel and hazard yellow</span></figcaption></figure>
       <figure><img src="img/iphone-look-newAge.webp" width="560" height="1145" alt="New Age look" loading="lazy"><figcaption><b>New Age</b><span>Sage, sand and still water</span></figcaption></figure>
     </div>
   </section>
@@ -257,10 +264,10 @@
   var sizer=new Image(); sizer.className="deck-sizer"; sizer.alt=""; sizer.src="img/wander-recordShop.webp"; sizer.width=1400; sizer.height=1073; deck.appendChild(sizer);
   SHOPS.forEach(function(l,i){
     var c=document.createElement("div"); c.className="card";
-    c.style.setProperty("--tabbg",l.tab); c.style.setProperty("--tabink",l.ink); c.style.setProperty("--swatch",l.sw);
-    var t=document.createElement("button"); t.type="button"; t.className="tab"; t.innerHTML='<i aria-hidden="true"></i>'+l.name;
+    var t=document.createElement("button"); t.type="button"; t.className="tab"; t.textContent=l.name;
     t.setAttribute("aria-label","Show the "+l.name+" shop");
-    t.style.left=(4+i*(84/(SHOPS.length-1)))*0.88+"%";
+    // Even steps across the top, so every tab sits on its own card.
+    t.style.left=(2+i*13)+"%";
     t.addEventListener("click",function(e){e.stopPropagation(); go(i);});
     var img=new Image(); img.className="shot"; img.width=1400; img.height=1073; img.decoding="async"; if(i>2) img.loading="lazy";
     img.src="img/wander-"+l.key+".webp";
@@ -269,15 +276,15 @@
     c.appendChild(t); c.appendChild(img); deck.appendChild(c); cards.push({el:c});
   });
   function layout(){
-    var narrow=deck.clientWidth<620, step=narrow?11:17;
+    var narrow=deck.clientWidth<620, step=narrow?12:20;
     cards.forEach(function(c,i){
       var d=i-active, s=c.el.style;
       c.el.classList.toggle("front",d===0); c.el.classList.toggle("past",d<0);
       if(d<0){ s.transform="translate3d(0,40px,120px) rotateX(-62deg)"; s.opacity="0"; s.zIndex=100+i; }
       else {
         var tilt=(i%2?1:-1)*Math.min(d,1)*0.6;
-        s.transform="translate3d(0,"+(-d*step)+"px,"+(-d*70)+"px) rotateX("+(d?7:0)+"deg) rotateZ("+tilt+"deg)";
-        s.opacity=d>5?"0":String(1-d*0.06); s.zIndex=String(100-d);
+        s.transform="translate3d(0,"+(-d*step)+"px,"+(-d*28)+"px) rotateX("+(d?4:0)+"deg) rotateZ("+tilt+"deg)";
+        s.opacity=String(1-d*0.05); s.zIndex=String(100-d);
         s.filter=d?"saturate(.85) brightness(.97)":"none";
       }
     });
@@ -295,6 +302,6 @@
   go(active);
 })();
 </script>
-<script src="site.js"></script>
+<script src="site.js?v=4"></script>
 </body>
 </html>
