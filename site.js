@@ -1,6 +1,6 @@
 // One place for the Discord invite. Paste the link between the quotes and every
 // Discord button on every page uses it; until then they lead to the Support page.
-var DISCORD = "";
+var DISCORD = "https://discord.gg/QUtsNJUvNV";
 
 (function () {
   if (DISCORD) {
