@@ -200,3 +200,7 @@ picture{display:contents}
 .copy-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .copy-row code{font-family:var(--mono);font-size:15px;background:var(--paper);padding:8px 12px;border-radius:10px;border:1px solid var(--rule)}
 .copy-row button{font:600 15px/1 var(--body);background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:10px 16px;cursor:pointer}
+
+/* Three phones side by side (Liner Notes) */
+.devices.three-phones .phone{flex:0 1 31%}
+.deck-controls > .seg-label{padding:0}

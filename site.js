@@ -17,9 +17,9 @@ var DISCORD = "https://discord.gg/QUtsNJUvNV";
   if (v && window.matchMedia) {
     var mq = window.matchMedia("(prefers-color-scheme: dark)");
     var pick = function () {
-      var dark = mq.matches, want = dark ? "img/hero-backroom-dark.mp4" : "img/hero-backroom.mp4";
+      var dark = mq.matches, want = dark ? "img/backroom-stand-dark.mp4" : "img/backroom-stand.mp4";
       if (v.currentSrc && v.currentSrc.indexOf(want) !== -1) return;
-      v.poster = dark ? "img/hero-backroom-dark-poster.webp" : "img/hero-backroom-poster.webp";
+      v.poster = dark ? "img/backroom-stand-dark-poster.webp" : "img/backroom-stand-poster.webp";
       v.muted = true; v.src = want; v.load(); var p = v.play(); if (p && p.catch) p.catch(function () {});
     };
     pick();
