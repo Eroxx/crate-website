@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
@@ -276,17 +276,19 @@
     c.appendChild(t); c.appendChild(img); deck.appendChild(c); cards.push({el:c});
   });
   function layout(){
-    var narrow=deck.clientWidth<620, step=narrow?12:20;
+    // Flat, not 3D: every browser draws it alike. Each card behind is a
+    // little smaller and a fixed step higher, so its top edge (and the tab
+    // on it) always shows above the card in front.
+    var narrow=deck.clientWidth<620, shrink=0.02, peek=narrow?12:20;
+    var h=(cards[0]&&cards[0].el.offsetHeight)||600;
     cards.forEach(function(c,i){
       var d=i-active, s=c.el.style;
       c.el.classList.toggle("front",d===0); c.el.classList.toggle("past",d<0);
-      if(d<0){ s.transform="translate3d(0,40px,120px) rotateX(-62deg)"; s.opacity="0"; s.zIndex=100+i; }
-      else {
-        var tilt=(i%2?1:-1)*Math.min(d,1)*0.6;
-        s.transform="translate3d(0,"+(-d*step)+"px,"+(-d*28)+"px) rotateX("+(d?4:0)+"deg) rotateZ("+tilt+"deg)";
-        s.opacity=String(1-d*0.05); s.zIndex=String(100-d);
-        s.filter=d?"saturate(.85) brightness(.97)":"none";
-      }
+      if(d<0){ s.transform="translateY(60px) scale(1.02)"; s.opacity="0"; s.zIndex=String(100+i); s.filter="none"; return; }
+      var sc=1-d*shrink, lift=d*(peek+h*shrink);
+      s.transform="translateY("+(-lift)+"px) scale("+sc+")";
+      s.opacity=String(1-d*0.05); s.zIndex=String(100-d);
+      s.filter=d?"saturate(.85) brightness(.97)":"none";
     });
     var l=SHOPS[active]; cap.innerHTML="<b>"+l.name+"</b><span>"+l.blurb+"</span>";
     count.textContent=(active+1)+" of "+SHOPS.length;
@@ -302,6 +304,6 @@
   go(active);
 })();
 </script>
-<script src="site.js?v=4"></script>
+<script src="site.js?v=5"></script>
 </body>
 </html>
