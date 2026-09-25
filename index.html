@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Crate Music Library for iPhone and iPad: your Spotify or Apple Music library as a room full of records. Ask for playlists in plain words, make mixtapes, and see every play.">
+<meta name="theme-color" content="#F4EDE1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15110E" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Crate Music Library">
+<meta property="og:description" content="Music as personal as your collection. iPhone and iPad.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Crate Music Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --paper:#F4EDE1; --card:#FCF8F1; --ink:#2A211B; --ink-2:#6B5B4E; --rule:#E2D6C4;
+  --accent:#C42C5E; --accent-ink:#FFFFFF; --mustard:#D99A1B; --plinth:#3A2E26; --plinth-ink:#F4EDE1;
+  --tab:#E9B94A; --tab-ink:#2A211B; --glow:rgba(196,44,94,.10);
+  --display:"DM Serif Display", "New York", "Iowan Old Style", Georgia, serif;
+  --body:"Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --wrap:1180px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#15110E; --card:#231D18; --ink:#F1E7D8; --ink-2:#B9A794; --rule:#3A3029;
+    --accent:#FF597D; --accent-ink:#1A0D10; --mustard:#F2BD4B; --plinth:#2D241E; --plinth-ink:#F1E7D8;
+    --tab:#F2BD4B; --tab-ink:#1D1610; --glow:rgba(255,89,125,.12);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#15110E; --card:#231D18; --ink:#F1E7D8; --ink-2:#B9A794; --rule:#3A3029;
+  --accent:#FF597D; --accent-ink:#1A0D10; --mustard:#F2BD4B; --plinth:#2D241E; --plinth-ink:#F1E7D8;
+  --tab:#F2BD4B; --tab-ink:#1D1610; --glow:rgba(255,89,125,.12);
+}
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-inline:20px}
+.wrap{max-width:var(--wrap);margin-inline:auto}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* Labels: the app sets its small print in a tracked mono */
+.label{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+
+/* Top bar */
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.brand-mark{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 50% 50%,var(--accent) 0 22%,#111 23% 100%);box-shadow:inset 0 0 0 2px rgba(255,255,255,.08)}
+.brand b{font-family:var(--display);font-weight:400;font-size:26px;line-height:1}
+.nav{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.nav a{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--ink);padding:8px 12px;border-radius:999px}
+.nav a:hover{background:var(--card)}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:40px;align-items:center;padding-block:28px 64px}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,7.2vw,92px);line-height:.98;letter-spacing:-.01em;margin:14px 0 22px;text-wrap:balance}
+.hero h1 em{color:var(--accent);font-style:italic}
+.hero p.lede{font-size:20px;max-width:34ch;color:var(--ink-2);margin:0 0 28px}
+.pills{display:flex;gap:10px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--card);border:1px solid var(--rule);font-weight:600;font-size:15px}
+.pill.solid{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.dot{width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.8}
+.hero-art{position:relative;padding-bottom:30px}
+.hero-art .pad{width:86%;margin-left:auto}
+.hero-art .phone{position:absolute;left:0;bottom:0;width:34%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.28))}
+.hero-art .pad{filter:drop-shadow(0 30px 50px rgba(0,0,0,.18))}
+
+/* The crate: sections are divider cards with a tab */
+.divider{position:relative;margin-top:56px;background:var(--card);border-radius:4px 22px 22px 22px;padding:48px clamp(20px,4vw,56px) 56px;box-shadow:0 1px 0 var(--rule),0 18px 40px -28px rgba(0,0,0,.35)}
+.divider::before{content:attr(data-tab);position:absolute;top:-30px;left:0;height:30px;padding:0 22px;display:flex;align-items:center;background:var(--tab);color:var(--tab-ink);font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;border-radius:12px 12px 0 0}
+.divider.alt::before{left:auto;right:28%}
+.divider.far::before{left:auto;right:0}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
+.row.flip > .copy{order:2}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,4.6vw,58px);line-height:1.02;margin:10px 0 18px;text-wrap:balance}
+.copy p{max-width:52ch;margin:0 0 14px;color:var(--ink)}
+.copy p.soft{color:var(--ink-2)}
+.facts{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px;max-width:52ch}
+.facts li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline}
+.facts li::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--accent);transform:translateY(-1px)}
+.devices{display:flex;align-items:flex-end;gap:18px;justify-content:center}
+.devices .pad{flex:0 1 72%;min-width:0}
+.devices .phone{flex:0 1 26%;min-width:0}
+.devices.two-phones .phone{flex:0 1 44%}
+.devices.solo .pad{flex:0 1 92%}
+
+/* Clerk request card */
+.ask{margin-top:24px;background:var(--paper);border:1px solid var(--rule);border-radius:18px;padding:18px}
+.ask .field{display:flex;align-items:center;gap:10px;background:var(--card);border:1.5px solid color-mix(in srgb,var(--accent) 40%,transparent);border-radius:999px;padding:12px 18px;font-size:17px}
+.ask .caret{width:2px;height:20px;background:var(--accent);animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{padding:7px 13px;border-radius:999px;background:var(--glow);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);font-size:15px}
+.chip b{font-weight:600}
+.ask small{display:block;margin-top:12px;color:var(--ink-2);font-size:14px}
+
+/* Stat strip, real figures from the library in the shots */
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:24px 0 8px;max-width:52ch}
+.num{border-top:2px solid var(--ink);padding-top:10px}
+.num b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(28px,3.4vw,40px);line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.num span{font-size:14px;color:var(--ink-2)}
+
+/* Looks: a rack of sleeves */
+.looks-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.rack{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;margin-top:32px}
+.rack figure{margin:0;display:grid;gap:10px;justify-items:center}
+.rack figcaption{text-align:center;font-size:14px;line-height:1.35}
+.rack figcaption b{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
+.rack figcaption span{color:var(--ink-2)}
+
+/* Two ways in */
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:28px}
+.svc{background:var(--paper);border-radius:16px;padding:22px}
+.svc h3{font-family:var(--display);font-weight:400;font-size:26px;margin:6px 0 8px;line-height:1.1}
+.svc p{margin:0;color:var(--ink-2);font-size:16px}
+
+footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:56px 40px;color:var(--ink-2);font-size:14px}
+footer b{font-family:var(--display);font-weight:400;font-size:22px;color:var(--ink)}
+
+@media (max-width:900px){
+  .hero,.row{grid-template-columns:minmax(0,1fr)}
+  .row.flip > .copy{order:0}
+  .rack{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .services{grid-template-columns:minmax(0,1fr)}
+  .nav{display:none}
+  .divider.alt::before,.divider.far::before{right:auto;left:0}
+}
+@media (max-width:520px){
+  body{font-size:16px;padding-inline:16px}
+  .rack{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .divider{padding-inline:18px}
+  .hero p.lede{font-size:18px}
+  .nums{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){.ask .caret{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top" aria-label="Crate Music Library">
+      <span class="brand-mark" aria-hidden="true"></span><b>Crate</b>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#clerk">The Clerk</a><a href="#mixtapes">Mixtapes</a><a href="#artists">Artists</a><a href="#wander">Wander</a><a href="#stats">Stats</a><a href="#looks">Looks</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="top">
+    <div>
+      <div class="label">Crate Music Library · iPhone &amp; iPad</div>
+      <h1>Music as personal as <em>your collection.</em></h1>
+      <p class="lede">Crate turns your Spotify or Apple Music library into a room full of records you actually own: flip through them, ask for a playlist in plain words, make mixtapes, and see every play you've ever made.</p>
+      <div class="pills">
+        <span class="pill solid"><span class="dot"></span>Coming to the App Store</span>
+        <span class="pill">Works with Spotify or Apple Music</span>
+      </div>
+    </div>
+    <div class="hero-art">
+      <img class="pad" src="img/ipad-home.webp" width="1100" height="1435" alt="Crate on iPad: the Home screen with Album of the Day, a painted record room, and the sidebar of crates and pinned records">
+      <img class="phone" src="img/iphone-home.webp" width="560" height="1145" alt="Crate on iPhone: Good morning, with albums to pick up where you left off and today's Album of the Day">
+    </div>
+  </section>
+
+  <section class="divider" id="clerk" data-tab="The Clerk">
+    <div class="row">
+      <div class="copy">
+        <div class="label">Ask in your own words</div>
+        <h2>Say what you want to hear.</h2>
+        <p>Type it the way you'd say it to a friend who knows your records. Apple Intelligence reads it, and the Clerk builds the list from songs you already have, never from a stranger's chart.</p>
+        <div class="ask" aria-label="Example request">
+          <div class="field">sad songs from the 80s, nothing over 5 minutes<span class="caret" aria-hidden="true"></span></div>
+          <div class="chips"><span class="chip"><b>80s</b> ×</span><span class="chip"><b>sad</b> ×</span><span class="chip"><b>songs under 5:00</b> ×</span></div>
+          <small>Every part it understood shows as a chip. Tap one to take it off.</small>
+        </div>
+        <ul class="facts">
+          <li>Moods, decades, tempo, key, length, "like Tom Waits but not Tom Waits", songs you haven't played since 2012</li>
+          <li>Swap, Keep or Remove any song, or ask "Why?" and it tells you</li>
+          <li>Save any list as a mixtape, or have it pick fresh every week</li>
+        </ul>
+      </div>
+      <div class="devices two-phones">
+        <img class="phone" src="img/iphone-clerk.webp" width="560" height="1145" alt="The Clerk on iPhone reading a request into the parts 80s, sad and songs under five minutes">
+        <img class="phone" src="img/iphone-clerk-list.webp" width="560" height="1145" alt="The Clerk's list on iPhone, each song with its mood and year, and Why, Swap, Keep and Remove">
+      </div>
+    </div>
+  </section>
+
+  <section class="divider alt" id="mixtapes" data-tab="Mixtapes">
+    <div class="row flip">
+      <div class="copy">
+        <div class="label">Smart playlists, on tape</div>
+        <h2>Mixtapes that keep themselves up to date.</h2>
+        <p>Set the rules once, like "added in the last month" or "the '90s and not played lately", and the tape changes as your library does. Describe one in a sentence and Apple Intelligence writes the rules for you to check.</p>
+        <p class="soft">Every tape gets a painted cover and a label in your hand. Pick a length from a C46 to a C120 and it splits into Side A and Side B, with a printed insert of liner notes. Crate can also write it into Spotify as an ordinary playlist, so it follows you to the car.</p>
+      </div>
+      <div class="devices">
+        <img class="pad" src="img/ipad-mixtapes.webp" width="1100" height="1435" alt="The Mixtapes room on iPad: a painted bedroom with a tape deck, a shelf of cassettes and a panel of controls">
+        <img class="phone" src="img/iphone-mixtapes.webp" width="560" height="1145" alt="Suggested mixtapes on iPhone: Recently Added, Forgotten Favorites, The '90s, Epics and Deep Cuts">
+      </div>
+    </div>
+  </section>
+
+  <section class="divider far" id="artists" data-tab="Artists">
+    <div class="row">
+      <div class="copy">
+        <div class="label">Every record, sorted properly</div>
+        <h2>The whole discography, and what's missing from yours.</h2>
+        <p>Open an artist and their records are laid out the way a collector thinks: Albums, Live, Compilations, Soundtracks, Singles &amp; EPs. The ones you have wear a ribbon. The rest are one tap from your library.</p>
+        <p class="soft">"You have 30 of their 54 studio albums." Crate checks MusicBrainz so a live album isn't filed as a studio one, and a soundtrack with one of their songs on it isn't counted as theirs.</p>
+      </div>
+      <div class="devices">
+        <img class="pad" src="img/ipad-artist.webp" width="1100" height="1435" alt="The Genesis artist page on iPad with rows of Albums and Live records, some marked In Your Library and others with an Add button">
+        <img class="phone" src="img/iphone-artist.webp" width="560" height="1145" alt="The Neil Young artist page on iPhone: You have 30 of their 54 studio albums">
+      </div>
+    </div>
+  </section>
+
+  <section class="divider" id="wander" data-tab="Wander">
+    <div class="row flip">
+      <div class="copy">
+        <div class="label">Follow the music</div>
+        <h2>Flip through the rack and see where it takes you.</h2>
+        <p>Wander lays artists out in a rack of records. Pull one out to hear it, keep it for a crate, or wander on from there to the next. Any artist works, whether you own them or not.</p>
+        <p class="soft">The Back Room is next door: new records from artists you already have, what's being reviewed this week, and the sidemen who played on your favourites.</p>
+      </div>
+      <div class="devices solo">
+        <img class="pad" src="img/ipad-wander.webp" width="1100" height="1435" alt="Wander on iPad: a sunlit room of record bins with five artists in the rack below">
+      </div>
+    </div>
+  </section>
+
+  <section class="divider alt" id="backroom" data-tab="Back Room">
+    <div class="row">
+      <div class="copy">
+        <div class="label">Records you don't have yet</div>
+        <h2>A listening room for what's new.</h2>
+        <p>Put a record on the stand and play it. Browse by reviews, by new releases from artists in your library, by more from the ones you love, or by the people who played on them.</p>
+      </div>
+      <div class="devices solo">
+        <img class="pad" src="img/ipad-backroom.webp" width="1100" height="1435" alt="The Back Room on iPad: a listening room with speakers, a turntable, and a ledge of five records with their review scores">
+      </div>
+    </div>
+  </section>
+
+  <section class="divider far" id="stats" data-tab="Stats">
+    <div class="row flip">
+      <div class="copy">
+        <div class="label">Your library, counted</div>
+        <h2>Every play, year by year, down to the song.</h2>
+        <p>Stats shows what you really have and how you really listen. Open a year, then a month, then a day, and see each song you played and when. It updates as each song ends.</p>
+        <div class="nums" aria-label="Figures from the library shown in these screenshots">
+          <div class="num"><b>8,023</b><span>albums</span></div>
+          <div class="num"><b>123,416</b><span>songs</span></div>
+          <div class="num"><b>8,614</b><span>hours of music</span></div>
+        </div>
+        <p class="soft">A real library, as the screenshots show it. Spotify only shares your last 50 plays, so Crate keeps each one as it goes, and Last.fm can fill in everything before.</p>
+      </div>
+      <div class="devices">
+        <img class="pad" src="img/ipad-stats.webp" width="1100" height="1435" alt="Stats on iPad: albums, artists, songs, eras by decade, listening by hour, activity and your year">
+        <img class="phone" src="img/iphone-listening.webp" width="560" height="1145" alt="Every Play on iPhone: 2026, then September, then Monday the 21st with each song and the time it was played">
+      </div>
+    </div>
+  </section>
+
+  <section class="divider" id="looks" data-tab="Looks">
+    <div class="looks-head">
+      <div>
+        <div class="label">Seven looks, light and dark</div>
+        <h2>Dress it like your favourite corner of music.</h2>
+      </div>
+      <p class="soft" style="max-width:40ch;margin:0;color:var(--ink-2)">Each look has its own colours and its own typeface, checked for contrast in light and dark. Or let Crate change look every day.</p>
+    </div>
+    <div class="rack">
+      <figure><img src="img/iphone-home.webp" width="560" height="1145" alt="Record Shop look" loading="lazy"><figcaption><b>Record Shop</b><span>Cream paper, raspberry and mustard</span></figcaption></figure>
+      <figure><img src="img/iphone-look-jazzClub.webp" width="560" height="1145" alt="Jazz Club look in dark mode" loading="lazy"><figcaption><b>Jazz Club</b><span>Navy and brass, like an old sleeve</span></figcaption></figure>
+      <figure><img src="img/iphone-look-punkZine.webp" width="560" height="1145" alt="Punk Zine look" loading="lazy"><figcaption><b>Punk Zine</b><span>Photocopy black with a hot-pink tear</span></figcaption></figure>
+      <figure><img src="img/iphone-look-soulRevue.webp" width="560" height="1145" alt="Soul Revue look" loading="lazy"><figcaption><b>Soul Revue</b><span>Warm '70s orange, brown and gold</span></figcaption></figure>
+      <figure><img src="img/iphone-look-lateNight.webp" width="560" height="1145" alt="Late Night look in dark mode" loading="lazy"><figcaption><b>Late Night</b><span>Purple and teal, FM after midnight</span></figcaption></figure>
+      <figure><img src="img/iphone-look-newAge.webp" width="560" height="1145" alt="New Age look" loading="lazy"><figcaption><b>New Age</b><span>Sage, sand and still water</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="divider far" id="yours" data-tab="Yours">
+    <div class="label">Built around what you own</div>
+    <h2>Your library, not a feed.</h2>
+    <div class="services">
+      <div class="svc"><div class="label">Spotify or Apple Music</div><h3>One app, either service</h3><p>Everything here works in both. Pick yours in Settings.</p></div>
+      <div class="svc"><div class="label">Apple Intelligence</div><h3>Reads you, privately</h3><p>Requests are read on your device, or on Apple's Private Cloud Compute for the harder ones. No account, no server of ours.</p></div>
+      <div class="svc"><div class="label">iPhone · iPad · CarPlay · Siri</div><h3>Wherever you listen</h3><p>Your crates, pins and mixtapes follow you through iCloud. Say "Ask the Clerk" to Siri from anywhere.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <div><b>Crate</b><br>Crate Music Library for iPhone and iPad</div>
+    <div>Screens shown on iPad Pro 13" and iPhone 17 Pro</div>
+  </footer>
+</div>
+</body>
+</html>
