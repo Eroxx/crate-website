@@ -126,6 +126,40 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,4.6vw,58px);l
 footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:56px 40px;color:var(--ink-2);font-size:14px}
 footer b{font-family:var(--display);font-weight:400;font-size:22px;color:var(--ink)}
 
+
+/* Back Room deck: the looks stand in a crate like divider cards */
+.br-head{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:end}
+.br-how{margin:0 0 18px;max-width:44ch;color:var(--ink-2)}
+.deck-wrap{margin-top:28px}
+.deck-controls{display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap;margin-bottom:10px}
+.seg{display:inline-flex;align-items:center;gap:4px;background:var(--paper);border:1px solid var(--rule);border-radius:999px;padding:4px}
+.seg-label{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);padding:0 8px 0 10px}
+.seg button,.flip button{font:600 15px/1 var(--body);color:var(--ink);background:transparent;border:0;border-radius:999px;padding:9px 14px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.flip{display:inline-flex;align-items:center;gap:6px}
+.flip button{background:var(--paper);border:1px solid var(--rule)}
+.flip button:hover,.seg button:hover{filter:brightness(.97)}
+.count{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--ink-2);min-width:7ch;text-align:center;font-variant-numeric:tabular-nums}
+.deck{position:relative;perspective:1600px;perspective-origin:50% 0%;outline:none;padding-top:120px;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.deck:focus-visible{outline:3px solid var(--accent);outline-offset:6px;border-radius:12px}
+.deck-sizer{visibility:hidden;display:block;width:100%;height:auto}
+.card{position:absolute;left:0;right:0;bottom:0;transform-origin:50% 100%;transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .45s ease,filter .45s ease;will-change:transform}
+.card img.shot{display:block;width:100%;height:auto;filter:drop-shadow(0 22px 30px rgba(0,0,0,.22));cursor:pointer}
+.card .tab{position:absolute;top:-34px;height:34px;display:flex;align-items:center;gap:8px;padding:0 14px;border-radius:12px 12px 0 0;background:var(--tabbg);color:var(--tabink);font:700 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;border:0;cursor:pointer;white-space:nowrap;box-shadow:0 -1px 0 rgba(0,0,0,.06) inset}
+.card .tab i{width:9px;height:9px;border-radius:50%;background:var(--swatch);box-shadow:0 0 0 1.5px rgba(255,255,255,.7)}
+.card.past{pointer-events:none}
+.deck-caption{display:flex;gap:10px 14px;align-items:baseline;flex-wrap:wrap;justify-content:center;margin-top:18px;text-align:center}
+.deck-caption b{font-family:var(--display);font-weight:400;font-size:28px}
+.deck-caption span{color:var(--ink-2)}
+@media (max-width:900px){.br-head{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:620px){
+  .deck{padding-top:78px}
+  .card .tab{top:-26px;height:26px;padding:0 9px;font-size:0;gap:0}
+  .card .tab i{width:10px;height:10px}
+  .card.front .tab{font-size:10px;gap:6px}
+}
+@media (prefers-reduced-motion:reduce){.card{transition:none}}
+
 @media (max-width:900px){
   .hero,.row{grid-template-columns:minmax(0,1fr)}
   .row.flip > .copy{order:0}
@@ -241,15 +275,32 @@ footer b{font-family:var(--display);font-weight:400;font-size:22px;color:var(--i
   </section>
 
   <section class="divider alt" id="backroom" data-tab="Back Room">
-    <div class="row">
+    <div class="br-head">
       <div class="copy">
         <div class="label">Records you don't have yet</div>
         <h2>A listening room for what's new.</h2>
         <p>Put a record on the stand and play it. Browse by reviews, by new releases from artists in your library, by more from the ones you love, or by the people who played on them.</p>
       </div>
-      <div class="devices solo">
-        <img class="pad" src="img/ipad-backroom.webp" width="1100" height="1435" alt="The Back Room on iPad: a listening room with speakers, a turntable, and a ledge of five records with their review scores">
+      <p class="soft br-how">Here it is on a 13-inch iPad in landscape, in each of Crate's seven looks. Flip through them like records in a crate: tap a tab, the front card, or use the arrow keys.</p>
+    </div>
+
+    <div class="deck-wrap">
+      <div class="deck-controls">
+        <div class="seg" role="group" aria-label="Sidebar">
+          <span class="seg-label">Sidebar</span>
+          <button type="button" id="sb-on" aria-pressed="true">Shown</button>
+          <button type="button" id="sb-off" aria-pressed="false">Hidden</button>
+        </div>
+        <div class="flip">
+          <button type="button" id="deck-prev" aria-label="Previous look">&#8249; Previous</button>
+          <span class="count" id="deck-count" aria-live="polite">1 of 7</span>
+          <button type="button" id="deck-next" aria-label="Next look">Next &#8250;</button>
+        </div>
       </div>
+      <div class="deck" id="deck" tabindex="0" aria-roledescription="carousel" aria-label="The Back Room in seven looks">
+        <!-- cards are built by the script below from LOOKS -->
+      </div>
+      <div class="deck-caption" id="deck-caption"><b>Record Shop</b><span>Cream paper, raspberry and mustard</span></div>
     </div>
   </section>
 
@@ -306,5 +357,63 @@ footer b{font-family:var(--display);font-weight:400;font-size:22px;color:var(--i
     <div>Screens shown on iPad Pro 13" and iPhone 17 Pro</div>
   </footer>
 </div>
+
+<script>
+(function(){
+  var LOOKS=[
+    {key:"recordShop",name:"Record Shop",blurb:"Cream paper, raspberry and mustard",tab:"#E9B94A",ink:"#2A211B",sw:"#C42C5E"},
+    {key:"jazzClub",name:"Jazz Club",blurb:"Deep navy and brass, like an old jazz sleeve",tab:"#16213A",ink:"#E8C35F",sw:"#5391FF"},
+    {key:"punkZine",name:"Punk Zine",blurb:"Photocopy black and white with a hot-pink tear",tab:"#111111",ink:"#F4E04D",sw:"#FF4FA3"},
+    {key:"soulRevue",name:"Soul Revue",blurb:"Warm '70s orange, brown and gold",tab:"#F2A93B",ink:"#3A2213",sw:"#9E3510"},
+    {key:"lateNight",name:"Late Night",blurb:"Purple and teal, FM radio after midnight",tab:"#221C38",ink:"#6FE0D4",sw:"#A07EFF"},
+    {key:"industrial",name:"Industrial",blurb:"Concrete, steel and hazard yellow, all on the grid",tab:"#E8B400",ink:"#1E2022",sw:"#A33B00"},
+    {key:"newAge",name:"New Age",blurb:"Sage, sand and still water: the calm one",tab:"#E7CFA9",ink:"#23302A",sw:"#0F6E63"}
+  ];
+  var deck=document.getElementById("deck"), cap=document.getElementById("deck-caption"), count=document.getElementById("deck-count");
+  var sbOn=document.getElementById("sb-on"), sbOff=document.getElementById("sb-off");
+  var active=0, sidebar="on", cards=[];
+  var sizer=new Image(); sizer.className="deck-sizer"; sizer.alt=""; sizer.src="img/br-recordShop-on.webp"; sizer.width=1400; sizer.height=1073; deck.appendChild(sizer);
+  LOOKS.forEach(function(l,i){
+    var c=document.createElement("div"); c.className="card";
+    c.style.setProperty("--tabbg",l.tab); c.style.setProperty("--tabink",l.ink); c.style.setProperty("--swatch",l.sw);
+    var t=document.createElement("button"); t.type="button"; t.className="tab"; t.innerHTML='<i aria-hidden="true"></i>'+l.name;
+    t.setAttribute("aria-label","Show the "+l.name+" look");
+    t.style.left=(4+i*(84/(LOOKS.length-1)))*0.88+"%";
+    t.addEventListener("click",function(e){e.stopPropagation(); go(i);});
+    var img=new Image(); img.className="shot"; img.width=1400; img.height=1073; img.decoding="async"; if(i>2) img.loading="lazy";
+    img.alt="The Back Room on iPad in landscape, "+l.name+" look";
+    img.addEventListener("click",function(){ if(swiped){swiped=false;return;} if(i===active) go(active+1 < LOOKS.length ? active+1 : 0); });
+    c.appendChild(t); c.appendChild(img); deck.appendChild(c); cards.push({el:c,img:img,look:l});
+  });
+  function srcs(){ cards.forEach(function(c){ c.img.src="img/br-"+c.look.key+"-"+sidebar+".webp"; }); }
+  function layout(){
+    var narrow=deck.clientWidth<620, step=narrow?11:17;
+    cards.forEach(function(c,i){
+      var d=i-active, s=c.el.style;
+      c.el.classList.toggle("front",d===0); c.el.classList.toggle("past",d<0);
+      if(d<0){ s.transform="translate3d(0,40px,120px) rotateX(-62deg)"; s.opacity="0"; s.zIndex=100+i; }
+      else {
+        var tilt=(i%2?1:-1)*Math.min(d,1)*0.6;
+        s.transform="translate3d(0,"+(-d*step)+"px,"+(-d*70)+"px) rotateX("+(d?7:0)+"deg) rotateZ("+tilt+"deg)";
+        s.opacity=d>5?"0":String(1-d*0.06); s.zIndex=String(100-d);
+        s.filter=d?"saturate(.85) brightness(.97)":"none";
+      }
+    });
+    var l=LOOKS[active]; cap.innerHTML="<b>"+l.name+"</b><span>"+l.blurb+"</span>";
+    count.textContent=(active+1)+" of "+LOOKS.length;
+  }
+  function go(i){ active=(i+LOOKS.length)%LOOKS.length; layout(); try{localStorage.setItem("crate.deck",JSON.stringify({a:active,s:sidebar}));}catch(e){} }
+  function setSidebar(v){ sidebar=v; sbOn.setAttribute("aria-pressed",v==="on"); sbOff.setAttribute("aria-pressed",v==="off"); srcs(); go(active); }
+  sbOn.addEventListener("click",function(){setSidebar("on");}); sbOff.addEventListener("click",function(){setSidebar("off");});
+  document.getElementById("deck-prev").addEventListener("click",function(){go(active-1);});
+  document.getElementById("deck-next").addEventListener("click",function(){go(active+1);});
+  deck.addEventListener("keydown",function(e){ if(e.key==="ArrowRight"){go(active+1);e.preventDefault();} else if(e.key==="ArrowLeft"){go(active-1);e.preventDefault();} });
+  var x0=null, swiped=false; deck.addEventListener("pointerdown",function(e){x0=e.clientX;});
+  deck.addEventListener("pointerup",function(e){ if(x0===null) return; var dx=e.clientX-x0; x0=null; if(Math.abs(dx)>40){ swiped=true; setTimeout(function(){swiped=false;},350); go(active+(dx<0?1:-1)); } });
+  window.addEventListener("resize",layout);
+  try{ var saved=JSON.parse(localStorage.getItem("crate.deck")||"null"); if(saved){ active=saved.a|0; sidebar=saved.s==="off"?"off":"on"; } }catch(e){}
+  setSidebar(sidebar);
+})();
+</script>
 </body>
 </html>
