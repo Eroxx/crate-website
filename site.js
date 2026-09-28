@@ -33,7 +33,7 @@ var DISCORD = "https://discord.gg/QUtsNJUvNV";
 })();
 
 // Support email: fill in to show it on the Support page.
-var SUPPORT_EMAIL = "cratemusicdev@gmail.com";
+var SUPPORT_EMAIL = "support@cratemusicapp.com";
 (function () {
   var row = document.querySelector("[data-email]");
   if (!row || !SUPPORT_EMAIL) return;
