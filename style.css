@@ -208,30 +208,44 @@ picture{display:contents}
 .looks-reel video{width:100%;height:auto;display:block}
 .looks-reel figcaption{font-size:14px;color:var(--ink-2);text-align:center}
 
-/* iPhone Duo: three ways to hold it. Real screenshots in a drawn bezel; the
-   half-folded one is bent at the line where its two panels meet (51.07%). */
+/* iPhone Duo: the ways to hold it. Real screenshots in a drawn bezel, every device
+   the same height (the outer display and the open inner one are nearly the same
+   height in life), standing on one baseline, captions starting on one line.
+   Columns are sized by each device's width at that height. */
 .duo-head{max-width:60ch}
 .duo-head p{color:var(--ink-2);margin:0}
-.duo-poses{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.3fr) minmax(0,1.3fr);gap:clamp(18px,3vw,40px);align-items:end;margin-top:36px}
-.pose{margin:0;display:grid;gap:14px}
-.pose figcaption{font-size:15px;line-height:1.4}
+.duo-poses{--h:clamp(220px,26vw,330px);display:grid;grid-template-rows:auto auto;column-gap:clamp(18px,3vw,40px);row-gap:16px;margin-top:36px;justify-content:center;
+  grid-template-columns:repeat(var(--n,3),auto)}
+.pose{margin:0;display:grid;grid-row:span 2;grid-template-rows:subgrid}
+.pose .device{align-self:end;height:var(--h);display:flex;justify-content:flex-start}
+.pose figcaption{font-size:15px;line-height:1.4;max-width:30ch}
 .pose figcaption b{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
 .pose figcaption span{color:var(--ink-2)}
-.duo-frame{background:#121212;padding:2.2%;border-radius:22px;box-shadow:0 26px 40px -24px rgba(0,0,0,.55),inset 0 0 0 1.5px rgba(255,255,255,.08)}
-.duo-frame.tall{padding:4.5%;border-radius:26px}
-.duo-frame img{display:block;width:100%;height:auto;border-radius:14px}
-.duo-book{display:flex;perspective:1400px;aspect-ratio:1500/1055;filter:drop-shadow(0 26px 30px rgba(0,0,0,.4))}
-.duo-book .page{height:100%;background:#121212 url(img/duo-book.webp) no-repeat;background-size:auto 100%;background-origin:border-box;background-clip:padding-box;border:6px solid #121212}
-.duo-book .left{flex:0 0 51.07%;background-position:left center;border-right:0;border-radius:18px 4px 4px 18px;transform-origin:right center;transform:rotateY(16deg)}
-.duo-book .right{flex:0 0 48.93%;background-position:right center;border-left:0;border-radius:4px 18px 18px 4px;transform-origin:left center;transform:rotateY(-16deg)}
+.duo-frame{box-sizing:border-box;height:100%;background:#121212;padding:9px;border-radius:24px;box-shadow:0 26px 40px -24px rgba(0,0,0,.55),inset 0 0 0 1.5px rgba(255,255,255,.08)}
+.duo-frame{width:calc((var(--h) - 18px) * var(--ar) + 18px)}
+.duo-frame img{display:block;height:100%;width:100%;object-fit:cover;border-radius:16px}
+.pose.tall .duo-frame{--ar:.6876}
+.pose.wide .duo-frame{--ar:1.4218}
+.duo-book{box-sizing:border-box;transform:scale(.96);transform-origin:center bottom;height:100%;width:calc((var(--h) - 18px) * 1.4218 + 18px);display:flex;perspective:1400px;aspect-ratio:1518/1073;filter:drop-shadow(0 26px 30px rgba(0,0,0,.4))}
+.duo-book .page{height:100%;background:#121212 url(img/duo-book.webp) no-repeat;background-size:auto 100%;background-origin:content-box;background-clip:content-box;padding:9px;box-sizing:border-box}
+.duo-book .left{flex:0 0 51.07%;padding-right:0;background-position:left center;border-radius:24px 4px 4px 24px;transform-origin:right center;transform:rotateY(16deg)}
+.duo-book .right{flex:0 0 48.93%;padding-left:0;background-position:right center;border-radius:4px 24px 24px 4px;transform-origin:left center;transform:rotateY(-16deg)}
+.pose.upright .duo-frame{--ar:.7034}
+.duo-row-label{margin:40px 0 0;text-align:center}
+.duo-stand{box-sizing:border-box;height:100%;width:calc((var(--h) - 18px) * .7034 + 18px);display:flex;flex-direction:column;perspective:1400px;filter:drop-shadow(0 26px 30px rgba(0,0,0,.4))}
+.duo-stand .page{width:100%;background:#121212 url(img/duo-stand.webp) no-repeat;background-size:100% auto;background-origin:content-box;background-clip:content-box;padding:9px;box-sizing:border-box}
+.duo-stand .top{flex:0 0 52.14%;padding-bottom:0;background-position:center top;border-radius:24px 24px 4px 4px;transform-origin:center bottom;transform:rotateX(-4deg)}
+.duo-stand .bottom{flex:0 0 47.86%;padding-top:0;background-position:center bottom;border-radius:4px 4px 24px 24px;transform-origin:center top;transform:rotateX(34deg)}
 @media (max-width:900px){
-  .duo-poses{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-  .duo-poses .pose:first-child{grid-row:span 2;align-self:center}
-}
-@media (max-width:560px){
-  .duo-poses{grid-template-columns:minmax(0,1fr)}
-  .duo-poses .pose:first-child{grid-row:auto}
-  .duo-poses .pose:first-child .duo-frame{width:62%;justify-self:center}
+  .duo-poses{--h:auto;grid-template-columns:minmax(0,1fr);grid-template-rows:none;row-gap:28px;justify-content:stretch}
+  .pose{grid-row:auto;grid-template-rows:none;gap:14px}
+  .pose .device{height:auto;justify-content:center}
+  .duo-frame,.duo-book{height:auto;width:100%}
+  .duo-stand{height:auto;width:62%;aspect-ratio:2024/2870}
+  .pose.upright .duo-frame{width:62%}
+  .duo-frame img{width:100%;height:auto}
+  .duo-frame{aspect-ratio:auto}
+  .pose.tall .duo-frame{width:62%}
 }
 
 /* The Clerk's counter: request slips on the left, what was pulled on the right,

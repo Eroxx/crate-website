@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=7">
+<link rel="stylesheet" href="style.css?v=9">
 <style>
 /* App Store badge (store.js). Apple: 40px minimum height, clear space a quarter of its height,
    never recolored or altered. */
@@ -67,23 +67,32 @@
   <section class="divider far" id="duo" data-tab="iPhone Duo">
     <div class="duo-head">
       <div class="label">Made for iPhone Duo</div>
-      <h2>One record, three ways to hold it.</h2>
+      <h2>One record, every way you hold it.</h2>
       <p>Crate follows the room it's given, not the name of the device. Fold or unfold at any moment and you're still on the same page, with the same record playing.</p>
     </div>
     <div class="duo-poses">
-      <figure class="pose">
-        <div class="duo-frame tall"><img src="img/duo-closed.webp" width="700" height="1018" alt="Crate on the closed iPhone Duo: Home at full height, with Up Next, Pick Up and Album of the Day" loading="lazy"></div>
+      <figure class="pose tall">
+        <div class="device"><div class="duo-frame"><img src="img/duo-closed.webp" width="700" height="1018" alt="Crate on the closed iPhone Duo: Home at full height, with Up Next, Pick Up and Album of the Day" loading="lazy"></div></div>
         <figcaption><b>Closed</b><span>The outer screen keeps your music at full height, with the controls in the side strip.</span></figcaption>
       </figure>
       <figure class="pose">
-        <div class="duo-book" role="img" aria-label="Crate on the half-folded iPhone Duo: Deacon Blues playing on the left page, the liner notes for Aja on the right">
-          <div class="page left"></div><div class="page right"></div>
-        </div>
-        <figcaption><b>Half-folded, like a book</b><span>The record on one page, its liner notes on the other, meeting at the crease.</span></figcaption>
+        <div class="device"><div class="duo-book" role="img" aria-label="Crate on the half-folded iPhone Duo: Deacon Blues playing on the left page, the liner notes for Aja on the right"><div class="page left"></div><div class="page right"></div></div></div>
+        <figcaption><b>Half-folded, like a book</b><span>Hold it like a book, or stand it on its edges like a tripod: the record on one page, its liner notes on the other, meeting at the crease.</span></figcaption>
       </figure>
-      <figure class="pose">
-        <div class="duo-frame wide"><img src="img/duo-open.webp" width="1500" height="1055" alt="Crate on the open iPhone Duo: the sidebar beside a shelf of albums" loading="lazy"></div>
+      <figure class="pose wide">
+        <div class="device"><div class="duo-frame"><img src="img/duo-open.webp" width="1500" height="1055" alt="Crate on the open iPhone Duo: the sidebar beside a shelf of albums" loading="lazy"></div></div>
         <figcaption><b>Open</b><span>A two-column app: your shelves beside the sidebar, the way they are on iPad.</span></figcaption>
+      </figure>
+    </div>
+    <p class="label duo-row-label">Turned upright</p>
+    <div class="duo-poses" style="--n:2">
+      <figure class="pose">
+        <div class="device"><div class="duo-stand" role="img" aria-label="Crate on the iPhone Duo half-folded and set down like a laptop: Deacon Blues playing above the fold, the liner notes for Aja below it"><div class="page top"></div><div class="page bottom"></div></div></div>
+        <figcaption><b>Half-folded, set down</b><span>Lay the bottom half on the table: the record plays above the fold, and its liner notes and story sit on the half below.</span></figcaption>
+      </figure>
+      <figure class="pose upright">
+        <div class="device"><div class="duo-frame"><img src="img/duo-upright.webp" width="900" height="1280" alt="Crate on the open iPhone Duo held upright: a grid of album covers" loading="lazy"></div></div>
+        <figcaption><b>Open, held upright</b><span>A page of covers the size of a paperback, three across.</span></figcaption>
       </figure>
     </div>
   </section>
