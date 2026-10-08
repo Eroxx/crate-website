@@ -45,3 +45,21 @@ var SUPPORT_EMAIL = "support@cratemusicapp.com";
     if (navigator.clipboard) navigator.clipboard.writeText(SUPPORT_EMAIL).then(done, function () {});
   });
 })();
+
+// The Clerk's counter: a request slip shows the receipt for that request.
+(function () {
+  var slips = document.querySelectorAll(".slip[data-i]");
+  if (!slips.length) return;
+  var receipts = document.querySelectorAll(".receipt[data-i]");
+  slips.forEach(function (s) {
+    s.addEventListener("click", function () {
+      slips.forEach(function (o) { o.setAttribute("aria-selected", o === s ? "true" : "false"); });
+      receipts.forEach(function (r) { r.hidden = r.getAttribute("data-i") !== s.getAttribute("data-i"); });
+      // On a phone the receipt sits under the slips: bring it into view.
+      if (window.matchMedia("(max-width:900px)").matches) {
+        var shown = document.querySelector('.receipt[data-i="' + s.getAttribute("data-i") + '"]');
+        if (shown) shown.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    });
+  });
+})();

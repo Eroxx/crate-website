@@ -17,7 +17,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=7">
+<style>
+/* App Store badge (store.js). Apple: 40px minimum height, clear space a quarter of its height,
+   never recolored or altered. */
+[hidden]{display:none!important}
+.store-badge{display:inline-block;line-height:0;margin:11px 0}
+.store-badge img{height:44px;width:auto}
+</style>
 </head>
 <body>
 
@@ -27,7 +34,7 @@
       <span class="brand-mark" aria-hidden="true"></span><b>Crate</b>
     </a>
     <nav class="nav" aria-label="Sections">
-      <a href="#clerk">The Clerk</a><a href="#mixtapes">Mixtapes</a><a href="#liner">Liner Notes</a><a href="#artists">Artists</a><a href="#wander">Wander</a><a href="#stats">Stats</a><a href="#looks">Looks</a><a href="support.html">Support</a><a class="discord" data-discord href="support.html#community"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.6 1.3a18.4 18.4 0 0 0-5.6 0L8.6 3a19.7 19.7 0 0 0-4.9 1.5C.6 9.1-.3 13.6.1 18.1a19.9 19.9 0 0 0 6 3l1.3-2.1a12.9 12.9 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12.2 0l.5.4a12.9 12.9 0 0 1-2.1 1l1.3 2.1a19.8 19.8 0 0 0 6-3c.5-5.2-.8-9.7-3.5-13.7ZM8.3 15.3c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Zm7.4 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Z"/></svg>Discord</a>
+      <a href="#duo">iPhone Duo</a><a href="#clerk">The Clerk</a><a href="#mixtapes">Mixtapes</a><a href="#liner">Liner Notes</a><a href="#artists">Artists</a><a href="#wander">Wander</a><a href="#stats">Stats</a><a href="#looks">Looks</a><a href="support.html">Support</a><a class="discord" data-discord href="support.html#community"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.6 1.3a18.4 18.4 0 0 0-5.6 0L8.6 3a19.7 19.7 0 0 0-4.9 1.5C.6 9.1-.3 13.6.1 18.1a19.9 19.9 0 0 0 6 3l1.3-2.1a12.9 12.9 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12.2 0l.5.4a12.9 12.9 0 0 1-2.1 1l1.3 2.1a19.8 19.8 0 0 0 6-3c.5-5.2-.8-9.7-3.5-13.7ZM8.3 15.3c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Zm7.4 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Z"/></svg>Discord</a>
     </nav>
   </header>
 
@@ -37,7 +44,8 @@
       <h1>Your music is personal. <em>Your app should be too.</em></h1>
       <p class="lede">Crate turns your Apple Music library into a room full of records you actually own: flip through them, ask for a playlist in plain words, make mixtapes, and see every play you've ever made.</p>
       <div class="pills">
-        <span class="pill solid"><span class="dot"></span>Coming soon to the App Store</span>
+        <span class="pill solid" data-store-soon><span class="dot"></span>Coming soon to the App Store</span>
+        <a class="store-badge" data-store-live hidden href="#" aria-label="Download Crate on the App Store"><picture><source srcset="img/app-store-badge-white.svg" media="(prefers-color-scheme: dark)"><img src="img/app-store-badge-black.svg" alt="Download on the App Store" width="132" height="44"></picture></a>
         <span class="pill">For Apple Music</span>
         <a class="pill discord" data-discord href="support.html#community"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.6 1.3a18.4 18.4 0 0 0-5.6 0L8.6 3a19.7 19.7 0 0 0-4.9 1.5C.6 9.1-.3 13.6.1 18.1a19.9 19.9 0 0 0 6 3l1.3-2.1a12.9 12.9 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12.2 0l.5.4a12.9 12.9 0 0 1-2.1 1l1.3 2.1a19.8 19.8 0 0 0 6-3c.5-5.2-.8-9.7-3.5-13.7ZM8.3 15.3c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Zm7.4 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Z"/></svg>Join the Discord</a>
       </div>
@@ -55,6 +63,30 @@
     <figcaption>The Back Room on iPad: take a record off the ledge, put it on the stand, flip to the next five, and meet the players on your records.</figcaption>
   </figure>
 
+
+  <section class="divider far" id="duo" data-tab="iPhone Duo">
+    <div class="duo-head">
+      <div class="label">Made for iPhone Duo</div>
+      <h2>One record, three ways to hold it.</h2>
+      <p>Crate follows the room it's given, not the name of the device. Fold or unfold at any moment and you're still on the same page, with the same record playing.</p>
+    </div>
+    <div class="duo-poses">
+      <figure class="pose">
+        <div class="duo-frame tall"><img src="img/duo-closed.webp" width="700" height="1018" alt="Crate on the closed iPhone Duo: Home at full height, with Up Next, Pick Up and Album of the Day" loading="lazy"></div>
+        <figcaption><b>Closed</b><span>The outer screen keeps your music at full height, with the controls in the side strip.</span></figcaption>
+      </figure>
+      <figure class="pose">
+        <div class="duo-book" role="img" aria-label="Crate on the half-folded iPhone Duo: Deacon Blues playing on the left page, the liner notes for Aja on the right">
+          <div class="page left"></div><div class="page right"></div>
+        </div>
+        <figcaption><b>Half-folded, like a book</b><span>The record on one page, its liner notes on the other, meeting at the crease.</span></figcaption>
+      </figure>
+      <figure class="pose">
+        <div class="duo-frame wide"><img src="img/duo-open.webp" width="1500" height="1055" alt="Crate on the open iPhone Duo: the sidebar beside a shelf of albums" loading="lazy"></div>
+        <figcaption><b>Open</b><span>A two-column app: your shelves beside the sidebar, the way they are on iPad.</span></figcaption>
+      </figure>
+    </div>
+  </section>
 
   <section class="divider" id="clerk" data-tab="The Clerk">
     <div class="row">
@@ -77,6 +109,15 @@
         <picture><source srcset="img/iphone-clerk-dark.webp" media="(prefers-color-scheme: dark)"><img class="phone" src="img/iphone-clerk.webp" width="560" height="1145" alt="The Clerk on iPhone reading a request into the parts 80s, sad and songs under five minutes"></picture>
         <picture><source srcset="img/iphone-clerk-list-dark.webp" media="(prefers-color-scheme: dark)"><img class="phone" src="img/iphone-clerk-list.webp" width="560" height="1145" alt="The Clerk's list on iPhone, each song with its mood and year, and Why, Swap, Keep and Remove"></picture>
       </div>
+    </div>
+      <div class="counter">
+      <div class="counter-head">
+        <div class="label">At the counter</div>
+        <h3>Hand the Clerk a slip.</h3>
+        <p>Every request here was typed into the Clerk and run against one real Apple Music library of 82,642 songs, using Apple Intelligence on the device. These are the songs it pulled, in its order, and what it said when part of a request was beyond it.</p>
+      </div>
+      <div class="slips" role="tablist" aria-label="Requests"><button class="slip" type="button" role="tab" data-i="0" aria-selected="true">Motown for a road trip, nothing slow</button><button class="slip" type="button" role="tab" data-i="1" aria-selected="false">rainy Sunday morning, nothing with vocals</button><button class="slip" type="button" role="tab" data-i="2" aria-selected="false">Leonard Cohen songs sung by anybody but Leonard Cohen</button><button class="slip" type="button" role="tab" data-i="3" aria-selected="false">70s soul for a dinner party that builds</button><button class="slip" type="button" role="tab" data-i="4" aria-selected="false">sad songs from the 80s, nothing over 5 minutes</button><button class="slip" type="button" role="tab" data-i="5" aria-selected="false">songs with trains in the title</button><button class="slip" type="button" role="tab" data-i="6" aria-selected="false">Icelandic polka</button></div>
+      <div class="receipts"><div class="receipt" role="tabpanel" data-i="0"><div class="r-top"><span>Crate &middot; pulled for you</span><span>25 songs</span></div><p class="r-ask">&ldquo;Motown for a road trip, nothing slow&rdquo;</p><div class="chips"><span class="chip">energetic</span><span class="chip">motown</span></div><ol><li><b>ABC</b><em>1992</em><i>Jackson 5</i></li><li><b>War</b><em>1970</em><i>Edwin Starr</i></li><li><b>Higher Ground</b><em>1973</em><i>Stevie Wonder</i></li><li><b>First I Look at the Purse (Single Version)</b><em>1992</em><i>The Contours</i></li><li><b>I Can&#x27;t Get Next to You</b><em>1992</em><i>The Temptations</i></li><li><b>What&#x27;s Going On (Single Version / Mono)</b><em>1992</em><i>Marvin Gaye</i></li></ol><p class="r-more">+ 19 more on the list</p></div><div class="receipt" role="tabpanel" data-i="1" hidden><div class="r-top"><span>Crate &middot; pulled for you</span><span>25 songs</span></div><p class="r-ask">&ldquo;rainy Sunday morning, nothing with vocals&rdquo;</p><div class="chips"><span class="chip">calm</span><span class="chip">instrumental</span></div><ol><li><b>Quicksilver Glide Divine</b><em>1992</em><i>Spectrum</i></li><li><b>Sweet Lullaby (Ambient Mix)</b><em>1992</em><i>Deep Forest</i></li><li><b>Kneeling Down</b><em>2004</em><i>Tord Gustavsen Trio</i></li><li><b>Let&#x27;s Get It On (2008 Re-edit)</b><em>2008</em><i>Roni Size &amp; Reprazent</i></li><li><b>A Job Well Done</b><em>1991</em><i>Jim Chappell</i></li><li><b>Behind the Waterfall</b><em>1985</em><i>David Lanz &amp; Paul Speer</i></li></ol><p class="r-more">+ 19 more on the list</p></div><div class="receipt" role="tabpanel" data-i="2" hidden><div class="r-top"><span>Crate &middot; pulled for you</span><span>15 songs</span></div><p class="r-ask">&ldquo;Leonard Cohen songs sung by anybody but Leonard Cohen&rdquo;</p><div class="chips"><span class="chip">covers of Leonard Cohen songs</span></div><ol><li><b>Famous Blue Raincoat</b><em>1987</em><i>Jennifer Warnes</i></li><li><b>The Stranger Song</b><em>1995</em><i>Emmylou Harris</i></li><li><b>Coming Back to You</b><em>1987</em><i>Jennifer Warnes</i></li><li><b>The Future</b><em>2012</em><i>Eleni Mandell</i></li><li><b>Diamonds in the Mine</b><em>2025</em><i>Cass McCombs</i></li><li><b>If It Be Your Will (Reprise)</b><em>1987</em><i>Jennifer Warnes</i></li></ol><p class="r-more">+ 9 more on the list</p><p class="r-note">MusicBrainz says who wrote each of these, so songs they only sang (traditional ones, or other people’s) are left out.</p></div><div class="receipt" role="tabpanel" data-i="3" hidden><div class="r-top"><span>Crate &middot; pulled for you</span><span>25 songs</span></div><p class="r-ask">&ldquo;70s soul for a dinner party that builds&rdquo;</p><div class="chips"><span class="chip">70s</span><span class="chip">chill</span><span class="chip">soul</span><span class="chip">builds up</span></div><ol><li><b>Creation (Epilogue)</b><em>1972</em><i>The Jimmy Castor Bunch</i></li><li><b>Never Dreamed You&#x27;d Leave In Summer</b><em>1971</em><i>Stevie Wonder</i></li><li><b>Open Our Eyes</b><em>1974</em><i>Earth, Wind &amp; Fire</i></li><li><b>Easy Goin&#x27; Evening (My Mama&#x27;s Call)</b><em>1976</em><i>Stevie Wonder</i></li><li><b>The Look of Love</b><em>1971</em><i>Isaac Hayes</i></li><li><b>Let&#x27;s Burn Down the Cornfield</b><em>1974</em><i>Etta James</i></li></ol><p class="r-more">+ 19 more on the list</p></div><div class="receipt" role="tabpanel" data-i="4" hidden><div class="r-top"><span>Crate &middot; pulled for you</span><span>25 songs</span></div><p class="r-ask">&ldquo;sad songs from the 80s, nothing over 5 minutes&rdquo;</p><div class="chips"><span class="chip">80s</span><span class="chip">sad</span><span class="chip">songs under 5:00</span></div><ol><li><b>The Courtyard</b><em>1988</em><i>Nightnoise</i></li><li><b>In The Death Cell (Love Theme Reprise)</b><em>1980</em><i>Queen</i></li><li><b>Man In the Long Black Coat</b><em>1989</em><i>Bob Dylan</i></li><li><b>Un sacco bello (tema di Marisol 7) [Colonna sonora del film &quot;Un sacco bello&quot;]</b><em>1980</em><i>Ennio Morricone</i></li><li><b>Tango Till They&#x27;re Sore (2023 Remaster)</b><em>1985</em><i>Tom Waits</i></li><li><b>Slip Slidin&#x27; Away (Live)</b><em>1982</em><i>Simon &amp; Garfunkel</i></li></ol><p class="r-more">+ 19 more on the list</p></div><div class="receipt" role="tabpanel" data-i="5" hidden><div class="r-top"><span>Crate &middot; pulled for you</span><span>25 songs</span></div><p class="r-ask">&ldquo;songs with trains in the title&rdquo;</p><div class="chips"><span class="chip">titles with train or railroad</span></div><ol><li><b>Slow Train (Soundcheck)</b><em>2017</em><i>Bob Dylan</i></li><li><b>Fast Train</b><em>2002</em><i>Solomon Burke</i></li><li><b>Riding On a Railroad (Live)</b><em>1993</em><i>James Taylor</i></li><li><b>My Baby Thinks He&#x27;s A Train</b><em>1962</em><i>Rosanne Cash</i></li><li><b>Take the &quot;A&quot; Train</b><em>1993</em><i>Dave Grusin</i></li><li><b>Hear My Train A-Comin&#x27; (Live At Berkeley Community Theatre, Berkeley, CA)</b><em>2001</em><i>Jimi Hendrix</i></li></ol><p class="r-more">+ 19 more on the list</p><p class="r-note">Matched by words in the titles (train or railroad), not by what the songs are about: Crate can’t read lyrics.</p></div><div class="receipt" role="tabpanel" data-i="6" hidden><div class="r-top"><span>Crate &middot; pulled for you</span><span>25 songs</span></div><p class="r-ask">&ldquo;Icelandic polka&rdquo;</p><div class="chips"><span class="chip">from Iceland</span></div><ol><li><b>Lakehouse (2011 Iceland Release Version)</b><em>2011</em><i>Of Monsters and Men</i></li><li><b>Sé lest Pt. 1 (The Tape Variations)</b><em>2025</em><i>Sigur Rós</i></li><li><b>Fuglar</b><em>2002</em><i>K.U.K.L.</i></li><li><b>Animal Arithmetic</b><em>2010</em><i>Jónsi</i></li><li><b>Quicksand</b><em>2015</em><i>Björk</i></li><li><b>Bak Þitt Er Sem Rennibraut</b><em>2012</em><i>múm</i></li></ol><p class="r-more">+ 19 more on the list</p><p class="r-note">The Clerk didn’t know what to do with “polka”, so the list leaves it out and goes by the rest.</p></div></div>
     </div>
   </section>
 
@@ -304,6 +345,7 @@
   go(active);
 })();
 </script>
-<script src="site.js?v=5"></script>
+<script src="site.js?v=7"></script>
+<script src="store.js" defer></script>
 </body>
 </html>

@@ -207,3 +207,59 @@ picture{display:contents}
 .looks-reel{margin:32px auto 8px;display:grid;gap:12px;justify-items:center;max-width:340px}
 .looks-reel video{width:100%;height:auto;display:block}
 .looks-reel figcaption{font-size:14px;color:var(--ink-2);text-align:center}
+
+/* iPhone Duo: three ways to hold it. Real screenshots in a drawn bezel; the
+   half-folded one is bent at the line where its two panels meet (51.07%). */
+.duo-head{max-width:60ch}
+.duo-head p{color:var(--ink-2);margin:0}
+.duo-poses{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.3fr) minmax(0,1.3fr);gap:clamp(18px,3vw,40px);align-items:end;margin-top:36px}
+.pose{margin:0;display:grid;gap:14px}
+.pose figcaption{font-size:15px;line-height:1.4}
+.pose figcaption b{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
+.pose figcaption span{color:var(--ink-2)}
+.duo-frame{background:#121212;padding:2.2%;border-radius:22px;box-shadow:0 26px 40px -24px rgba(0,0,0,.55),inset 0 0 0 1.5px rgba(255,255,255,.08)}
+.duo-frame.tall{padding:4.5%;border-radius:26px}
+.duo-frame img{display:block;width:100%;height:auto;border-radius:14px}
+.duo-book{display:flex;perspective:1400px;aspect-ratio:1500/1055;filter:drop-shadow(0 26px 30px rgba(0,0,0,.4))}
+.duo-book .page{height:100%;background:#121212 url(img/duo-book.webp) no-repeat;background-size:auto 100%;background-origin:border-box;background-clip:padding-box;border:6px solid #121212}
+.duo-book .left{flex:0 0 51.07%;background-position:left center;border-right:0;border-radius:18px 4px 4px 18px;transform-origin:right center;transform:rotateY(16deg)}
+.duo-book .right{flex:0 0 48.93%;background-position:right center;border-left:0;border-radius:4px 18px 18px 4px;transform-origin:left center;transform:rotateY(-16deg)}
+@media (max-width:900px){
+  .duo-poses{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .duo-poses .pose:first-child{grid-row:span 2;align-self:center}
+}
+@media (max-width:560px){
+  .duo-poses{grid-template-columns:minmax(0,1fr)}
+  .duo-poses .pose:first-child{grid-row:auto}
+  .duo-poses .pose:first-child .duo-frame{width:62%;justify-self:center}
+}
+
+/* The Clerk's counter: request slips on the left, what was pulled on the right,
+   printed like a shop receipt. Every example is a real run on a real library. */
+.counter{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,3vw,40px);margin-top:44px;align-items:start}
+.counter-head{grid-column:1/-1;max-width:62ch}
+.counter-head h3{font-family:var(--display);font-weight:400;font-size:clamp(28px,3.2vw,40px);line-height:1.05;margin:8px 0 10px}
+.counter-head p{margin:0;color:var(--ink-2)}
+.slips{display:flex;flex-wrap:wrap;gap:10px;align-content:start}
+.slip{font:inherit;font-family:var(--display);font-style:italic;font-size:19px;line-height:1.2;text-align:left;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:6px 14px 14px 6px;padding:11px 16px 11px 18px;cursor:pointer;position:relative;transition:transform .15s ease,background .15s ease}
+.slip::before{content:"";position:absolute;left:6px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:50%;background:var(--rule)}
+.slip:hover{transform:translateY(-2px)}
+.slip[aria-selected="true"]{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.slip[aria-selected="true"]::before{background:var(--accent-ink)}
+.receipt{background:var(--paper);border-radius:4px;padding:22px 22px 26px;font-family:var(--mono);font-size:13.5px;line-height:1.5;position:relative;box-shadow:0 18px 30px -24px rgba(0,0,0,.5);
+  -webkit-mask:radial-gradient(circle 6px at 50% 100%,transparent 98%,#000) 0 0/16px 100% repeat-x;mask:radial-gradient(circle 6px at 50% 100%,transparent 98%,#000) 0 0/16px 100% repeat-x;padding-bottom:30px}
+.receipt .r-top{display:flex;justify-content:space-between;gap:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:11.5px;color:var(--ink-2);border-bottom:1.5px dashed var(--rule);padding-bottom:10px}
+.receipt .r-ask{font-family:var(--display);font-style:italic;font-size:24px;line-height:1.15;margin:14px 0 4px;color:var(--ink)}
+.receipt .chips{margin-top:10px}
+.receipt .chip{font-family:var(--body);font-size:13.5px;padding:5px 11px}
+.receipt ol{list-style:none;counter-reset:pull;padding:0;margin:16px 0 0;border-top:1.5px dashed var(--rule)}
+.receipt li{counter-increment:pull;display:grid;grid-template-columns:2.2em minmax(0,1fr) auto;gap:6px;padding:7px 0;border-bottom:1px dotted var(--rule)}
+.receipt li::before{content:counter(pull,decimal-leading-zero);color:var(--accent);font-weight:700}
+.receipt li b{font-family:var(--body);font-weight:600;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.receipt li i{font-style:normal;color:var(--ink-2);grid-column:2;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.receipt li em{font-style:normal;color:var(--ink-2);grid-row:1;grid-column:3}
+.receipt .r-note{margin:16px 0 0;font-family:var(--body);font-size:15px;color:var(--ink);border-left:3px solid var(--mustard);padding-left:12px}
+.receipt .r-more{margin:12px 0 0;color:var(--ink-2);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.receipt[hidden]{display:none}
+@media (max-width:900px){.counter{grid-template-columns:minmax(0,1fr)}.slips{gap:8px}.slip{font-size:16px;padding:8px 12px 8px 16px}}
+@media (prefers-reduced-motion:reduce){.slip{transition:none}}
