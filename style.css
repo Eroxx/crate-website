@@ -214,7 +214,11 @@ picture{display:contents}
    Columns are sized by each device's width at that height. */
 .duo-head{max-width:60ch}
 .duo-head p{color:var(--ink-2);margin:0}
-.duo-poses{--h:clamp(220px,26vw,330px);display:grid;grid-template-rows:auto auto;column-gap:clamp(18px,3vw,40px);row-gap:16px;margin-top:36px;justify-content:center;
+#duo{container-type:inline-size}
+/* The height that lets a row fit its card: each device's width is (h - 18) x its aspect,
+   and the first row's aspects add up to 3.53 (0.69 + 1.42 x 0.96 + 1.42), plus 54px of
+   bezel and two gaps. Capped at 330px. */
+.duo-poses{--h:min(330px,calc((100cqi - 54px - 2 * clamp(18px,3vw,40px)) / 3.53 + 18px));display:grid;grid-template-rows:auto auto;column-gap:clamp(18px,3vw,40px);row-gap:16px;margin-top:36px;justify-content:center;
   grid-template-columns:repeat(var(--n,3),auto)}
 .pose{margin:0;display:grid;grid-row:span 2;grid-template-rows:subgrid}
 .pose .device{align-self:end;height:var(--h);display:flex;justify-content:flex-start}
