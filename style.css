@@ -68,6 +68,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,4.6vw,58px);l
 .copy p.soft{color:var(--ink-2)}
 .facts{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px;max-width:52ch}
 .facts li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline}
+.facts + p{margin-top:18px}
 .facts li::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--accent);transform:translateY(-1px)}
 .devices{display:flex;align-items:flex-end;gap:18px;justify-content:center}
 .devices .pad{flex:0 1 72%;min-width:0}

@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=12">
+<link rel="stylesheet" href="style.css?v=13">
 <style>
 /* App Store badge (store.js). Apple: 40px minimum height, clear space a quarter of its height,
    never recolored or altered. */
@@ -34,7 +34,7 @@
       <span class="brand-mark" aria-hidden="true"></span><b>Crate</b>
     </a>
     <nav class="nav" aria-label="Sections">
-      <a href="#duo">iPhone Duo</a><a href="#clerk">The Clerk</a><a href="#mixtapes">Mixtapes</a><a href="#liner">Liner Notes</a><a href="#artists">Artists</a><a href="#wander">Wander</a><a href="#stats">Stats</a><a href="#looks">Looks</a><a href="support.html">Support</a><a class="discord" data-discord href="support.html#community"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.6 1.3a18.4 18.4 0 0 0-5.6 0L8.6 3a19.7 19.7 0 0 0-4.9 1.5C.6 9.1-.3 13.6.1 18.1a19.9 19.9 0 0 0 6 3l1.3-2.1a12.9 12.9 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12.2 0l.5.4a12.9 12.9 0 0 1-2.1 1l1.3 2.1a19.8 19.8 0 0 0 6-3c.5-5.2-.8-9.7-3.5-13.7ZM8.3 15.3c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Zm7.4 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Z"/></svg>Discord</a>
+      <a href="#duo">iPhone Duo</a><a href="#clerk">The Clerk</a><a href="#roadtrips">Road Trips</a><a href="#mixtapes">Mixtapes</a><a href="#liner">Liner Notes</a><a href="#artists">Artists</a><a href="#wander">Wander</a><a href="#stats">Stats</a><a href="#looks">Looks</a><a href="support.html">Support</a><a class="discord" data-discord href="support.html#community"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.6 1.3a18.4 18.4 0 0 0-5.6 0L8.6 3a19.7 19.7 0 0 0-4.9 1.5C.6 9.1-.3 13.6.1 18.1a19.9 19.9 0 0 0 6 3l1.3-2.1a12.9 12.9 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12.2 0l.5.4a12.9 12.9 0 0 1-2.1 1l1.3 2.1a19.8 19.8 0 0 0 6-3c.5-5.2-.8-9.7-3.5-13.7ZM8.3 15.3c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Zm7.4 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Z"/></svg>Discord</a>
     </nav>
   </header>
 
@@ -124,6 +124,27 @@
     </div>
   </section>
 
+  <section class="divider far" id="roadtrips" data-tab="Road Trips">
+    <div class="row flip">
+      <div class="copy">
+        <div class="label">Musical Road Trips</div>
+        <h2>Travel through your own records.</h2>
+        <p>Pick where to start and where to end. Crate plans the road through records you already own and plays it, and every stop says why it follows the last.</p>
+        <ul class="facts">
+          <li><span><strong>Ride the Years:</strong> songs from every year you own a record from, in all your music or one genre, with a sign at each new decade</span></li>
+          <li><span><strong>Genre Road Map:</strong> Delta Blues to House by way of Chicago blues, R&amp;B and funk</span></li>
+          <li><span><strong>Two Records, One Road:</strong> from one album to another through the producer, player or studio they share</span></li>
+          <li><span><strong>The Tour Bus:</strong> town to town on a map, by where your artists come from</span></li>
+        </ul>
+        <p class="soft">Another Version takes a different road with different songs, as often as you like, and the Road Trip widget carries on from where you stopped.</p>
+      </div>
+      <div class="devices two-phones">
+        <picture><source srcset="img/iphone-roadtrip-tour-dark.webp" media="(prefers-color-scheme: dark)"><img class="phone" src="img/iphone-roadtrip-tour.webp" width="560" height="1143" loading="lazy" alt="The Tour Bus on iPhone: Athens to Seattle on a map, stopping in towns along the way, with the records from each"></picture>
+        <picture><source srcset="img/iphone-roadtrip-years-dark.webp" media="(prefers-color-scheme: dark)"><img class="phone" src="img/iphone-roadtrip-years.webp" width="560" height="1143" loading="lazy" alt="Ride the Years on iPhone: 1960 to 1969, two songs a year, with how many of your records are from each year and their covers"></picture>
+      </div>
+    </div>
+  </section>
+
   <section class="divider alt" id="mixtapes" data-tab="Mixtapes">
     <div class="row flip">
       <div class="copy">
@@ -197,11 +218,11 @@
         <h2>Drop the needle without opening the app.</h2>
         <p>Put today's record, today's crate, the records that suit right now, or one of your mixtapes on your home screen. Each one has a <strong>Play button that works right there</strong>: tap it and the music starts, and Crate stays out of the way.</p>
         <div class="nums" aria-label="The widgets">
-          <div class="num"><b>6</b><span>widgets, small to large</span></div>
+          <div class="num"><b>7</b><span>widgets, small to large</span></div>
           <div class="num"><b>Play</b><span>straight from the home screen</span></div>
           <div class="num"><b>Look</b><span>the buttons wear your Look's colour</span></div>
         </div>
-        <p class="soft">The Mixtape widget is a cassette in the tape's own colour; hold it to choose which tape. Pick Up and Now Playing are there too.</p>
+        <p class="soft">The Mixtape widget is a cassette in the tape's own colour; hold it to choose which tape. Pick Up, Now Playing and the Road Trip you’re on are there too.</p>
       </div>
       <div class="devices two-phones">
         <img class="phone" src="img/iphone-widgets.webp" width="560" height="1143" loading="lazy" alt="Crate's widgets on an iPhone home screen: Album of the Day (On the Water by Future Islands) with Drop the Needle, Today's Crate (October Light) with Play a Mix, the Forgotten Favorites mixtape as a cassette with Play, and Right Now (Autumn Drift)">
