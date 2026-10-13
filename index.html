@@ -153,7 +153,7 @@
         <h2>Mixtapes that keep themselves up to date.</h2>
         <p>Set the rules once, like "added in the last month" or "the '90s and not played lately", and the tape changes as your library does. Describe one in a sentence and Apple Intelligence writes the rules for you to check.</p>
         <p>Playlists sit beside them, as burned discs: any songs, in your order, made by hand. Your Music app playlists play here too, in boxes of your own.</p>
-        <p class="soft">Every tape gets a painted cover and a label in your hand. Pick a length from a C46 to a C120 and it splits into Side A and Side B, with a printed insert of liner notes. Crate can also copy it into the Music app as an ordinary playlist, so it follows you to every Apple device and the car.</p>
+        <p class="soft">Every tape gets a painted cover and a label in your hand. Pick how long the tape is, from 46 minutes to two hours, and it splits into Side A and Side B, with a printed insert of liner notes. Crate can also copy it into the Music app as an ordinary playlist, so it follows you to every Apple device and the car.</p>
       </div>
       <div class="devices">
         <picture><source srcset="img/ipad-mixtapes-dark.webp" media="(prefers-color-scheme: dark)"><img class="pad" src="img/ipad-mixtapes.webp" width="1100" height="1435" alt="The Mixtapes room on iPad: a painted bedroom with a tape deck and cassettes on the shelf, above your mixtapes and playlists"></picture>
@@ -295,7 +295,7 @@
     <div class="row flip">
       <div class="copy">
         <div class="label">Records you don't have yet</div>
-        <h2>A listening room for what's new.</h2>
+        <h2>A listening room for what you're missing.</h2>
         <p>Take a record off the ledge and put it on the stand: its score, when it was reviewed, and a button to hear thirty seconds. Browse by this week's reviews, by new releases from artists in your library, by more from the ones you love, or by the people who played on them.</p>
         <p class="soft">The video at the top of the page is this room in motion. For records by artists you don't have yet, picked through the ones you do, there's <a href="#fridaybox">the Friday Box</a>.</p>
       </div>
@@ -394,7 +394,7 @@
     // Even steps across the top, so every tab sits on its own card.
     t.style.left=(2+i*13)+"%";
     t.addEventListener("click",function(e){e.stopPropagation(); go(i);});
-    var img=new Image(); img.className="shot"; img.width=1400; img.height=1073; img.decoding="async"; if(i>2) img.loading="lazy";
+    var img=new Image(); img.className="shot"; img.width=1400; img.height=1073; img.decoding="async";
     img.src="img/wander-"+l.key+".webp";
     img.alt="Wander on iPad in landscape: the "+l.name+" record shop, with five artists in the bin";
     img.addEventListener("click",function(){ if(swiped){swiped=false;return;} if(i===active) go(active+1 < SHOPS.length ? active+1 : 0); });
