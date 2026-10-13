@@ -49,6 +49,7 @@ a{color:var(--accent)}
 .hero p.lede{font-size:20px;max-width:34ch;color:var(--ink-2);margin:0 0 28px}
 .pills{display:flex;gap:10px;flex-wrap:wrap}
 .pill{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--card);border:1px solid var(--rule);font-weight:600;font-size:15px}
+a.pill{text-decoration:none;color:inherit}
 .pill.solid{background:var(--accent);color:var(--accent-ink);border-color:transparent}
 .dot{width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.8}
 .hero-art{position:relative;padding-bottom:30px}
@@ -73,6 +74,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,4.6vw,58px);l
 .devices{display:flex;align-items:flex-end;gap:18px;justify-content:center}
 .devices .pad{flex:0 1 72%;min-width:0}
 .devices .phone{flex:0 1 26%;min-width:0}
+.devices .phone.moving{flex:0 1 33%;height:auto;display:block}
 .devices.two-phones .phone{flex:0 1 44%}
 .devices.solo .pad{flex:0 1 92%}
 
@@ -171,6 +173,9 @@ picture{display:contents}
 .discord svg{width:20px;height:20px;flex:none}
 .nav a.discord{background:#5865F2;color:#fff;letter-spacing:.06em}
 .nav a.discord:hover{background:#4752C4}
+.nav a.nav-beta{background:var(--accent);color:var(--accent-ink)}
+.nav a.nav-beta:hover{filter:brightness(1.08);background:var(--accent)}
+.pill .tf-mark{flex:none}
 .pill.discord{background:#5865F2;color:#fff;border-color:transparent}
 .soon{opacity:.75}
 

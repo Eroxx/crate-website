@@ -3,6 +3,18 @@
 // every [data-store-live] element (Apple's official badge) appears, linked to it, and every
 // [data-store-soon] element ("Coming to the App Store" and the like) disappears.
 var APP_STORE = "";
+
+// The public TestFlight link, for as long as there is a beta. Every [data-beta]
+// element is wired to it, and the day APP_STORE is filled in they all disappear:
+// once the app is on the store, a TestFlight link is the wrong door.
+var TESTFLIGHT = "https://testflight.apple.com/join/EVGQ2bp2";
+(function () {
+  document.querySelectorAll("[data-beta]").forEach(function (el) {
+    if (APP_STORE || !TESTFLIGHT) { el.hidden = true; return; }
+    el.hidden = false;
+    if (el.tagName === "A") { el.href = TESTFLIGHT; el.target = "_blank"; el.rel = "noopener"; }
+  });
+})();
 (function () {
   if (!APP_STORE) return;
   document.querySelectorAll("[data-store-live]").forEach(function (el) {
