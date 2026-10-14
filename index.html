@@ -365,18 +365,18 @@
     <div class="label">And everything else</div>
     <h2>A dozen more reasons to dig.</h2>
     <div class="feats">
-      <div class="feat"><span class="k">Every morning</span><h3>Album of the Day</h3><p>One record from your shelves each day, with the reason it came up: released on this day, saved on this day years ago, or one you never got round to.</p></div>
-      <div class="feat"><span class="k">Every day</span><h3>Dig the Crate</h3><p>Twelve of your records in a spinning ring, joined by a reason you can see. Apple Intelligence thinks up new crates daily, connections you wouldn't make yourself.</p></div>
-      <div class="feat"><span class="k">This hour</span><h3>Right Now</h3><p>Records for the moment you're in: the time, the season, what you usually play at this hour and, if you let it, the weather.</p></div>
-      <div class="feat"><span class="k">The critics</span><h3>Reviews</h3><p>Rolling Stone, Pitchfork, AllMusic, The Guardian and the rest: each score, Metacritic's average, and the whole review to read inside Crate.</p></div>
-      <div class="feat"><span class="k">Start to finish</span><h3>Discography Journeys</h3><p>Work through an artist's records in the order they came out, one at a time. Crate keeps your place across days.</p></div>
-      <div class="feat"><span class="k">A few songs to go</span><h3>Almost Finished</h3><p>Albums you've heard most of, but not all. Finish It plays only the songs you missed.</p></div>
-      <div class="feat"><span class="k">On the turntable</span><h3>Drop the Needle</h3><p>The needle travels across the record as the song plays. Drag the deck to move through the song, a tick for every groove.</p></div>
-      <div class="feat"><span class="k">Filed properly</span><h3>Genre Bins</h3><p>Every album filed in a record-shop bin, Jazz or Soul & R&B, with divider cards inside for Hard Bop or Heartland Rock.</p></div>
-      <div class="feat"><span class="k">One to five</span><h3>Your Stars</h3><p>Rate any song or album. Your stars follow you to every device, and mixtapes can pick songs by them.</p></div>
-      <div class="feat"><span class="k">Handwritten</span><h3>Staff Picks</h3><p>Records from your own shelves with a reason written beside each, chosen fresh every week.</p></div>
-      <div class="feat"><span class="k">Tidy shelves</span><h3>Library Health</h3><p>The same record saved twice, albums that won't play, records with no cover: each with the fix right beside it.</p></div>
-      <div class="feat"><span class="k">In the car</span><h3>CarPlay</h3><p>Pick up any of your last five albums from the second you left it, your mixtapes, and your whole library by letter.</p></div>
+      <div class="feat"><span class="k">Every morning</span><h3>Album of the Day</h3><p>One record from your own shelves, and why it's today's: it came out on this date, you saved it on this date years ago, or you never got round to it.</p></div>
+      <div class="feat"><span class="k">Fresh every day</span><h3>Dig the Crate</h3><p>Twelve of your records joined by a thread you can see, from Birthdays This Week to ideas Apple Intelligence dreams up. New crates every day.</p></div>
+      <div class="feat"><span class="k">For this hour</span><h3>Right Now</h3><p>Records for the moment you're in. Crate reads the time, the season and what you usually play at this hour and, if you let it, the weather.</p></div>
+      <div class="feat"><span class="k">What the critics said</span><h3>Reviews</h3><p>Every score a record got, from Rolling Stone to Pitchfork, plus Metacritic's average. Tap one to read the whole review right in Crate.</p></div>
+      <div class="feat"><span class="k">An artist, in order</span><h3>Discography Journeys</h3><p>Hear an artist's records in the order they came out, one album at a time. Crate keeps your place, even weeks later.</p></div>
+      <div class="feat"><span class="k">A few songs to go</span><h3>Almost Finished</h3><p>Albums you've nearly heard all the way through. One tap plays just the songs you missed.</p></div>
+      <div class="feat"><span class="k">A turntable you can play</span><h3>Drop the Needle</h3><p>The needle crosses the record as the song plays. Drag the deck to jump around the song, with a tick for every groove.</p></div>
+      <div class="feat"><span class="k">Handwritten</span><h3>Staff Picks</h3><p>Records from your own shelves, each with a handwritten note on why it's worth a spin. New every week.</p></div>
+      <div class="feat"><span class="k">New to you</span><h3>Nobody You Know Yet</h3><p>Artists loved by people who play what you play, and you don't own a thing by. Tap one to hear thirty seconds.</p></div>
+      <div class="feat"><span class="k">Years ago today</span><h3>On This Day</h3><p>Albums you saved on this date in other years, back on your Home screen.</p></div>
+      <div class="feat"><span class="k">Tidy shelves</span><h3>Library Health</h3><p>Albums saved twice, records Apple Music won't play, missing covers: Crate finds them and puts the fix right beside each one.</p></div>
+      <div class="feat"><span class="k">In the car</span><h3>CarPlay</h3><p>Carry on any of your last five albums from the second you left it, with your mixtapes and whole library a tap away.</p></div>
     </div>
     <div class="pills more-cta">
       <a class="pill solid" data-beta hidden href="#" aria-label="Try the Crate beta, free on TestFlight"><svg class="tf-mark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M21.9 2.1 2.6 9.9l6.6 2.6z"/><path fill="currentColor" d="M22.6 2.8 9.9 13.1l4.9 8.6z"/><path fill="currentColor" opacity=".5" d="M9.9 13.9v4.6l2.6-3z"/></svg>Try the beta, free on TestFlight</a>
@@ -429,10 +429,12 @@
     // on it) always shows above the card in front.
     var narrow=deck.clientWidth<620, shrink=0.02, peek=narrow?12:20;
     var h=(cards[0]&&cards[0].el.offsetHeight)||600;
+    // Round and round, like a crate: a shop you flip past goes to the back,
+    // so all seven tabs always show (they vanished one by one, 13 Oct 2026).
+    var n=cards.length;
     cards.forEach(function(c,i){
-      var d=i-active, s=c.el.style;
-      c.el.classList.toggle("front",d===0); c.el.classList.toggle("past",d<0);
-      if(d<0){ s.transform="translateY(60px) scale(1.02)"; s.opacity="0"; s.zIndex=String(100+i); s.filter="none"; return; }
+      var d=(i-active+n)%n, s=c.el.style;
+      c.el.classList.toggle("front",d===0); c.el.classList.remove("past");
       var sc=1-d*shrink, lift=d*(peek+h*shrink);
       s.transform="translateY("+(-lift)+"px) scale("+sc+")";
       s.opacity=String(1-d*0.05); s.zIndex=String(100-d);
@@ -441,15 +443,14 @@
     var l=SHOPS[active]; cap.innerHTML="<b>"+l.name+"</b><span>"+l.blurb+"</span>";
     count.textContent=(active+1)+" of "+SHOPS.length;
   }
-  function go(i){ active=(i+SHOPS.length)%SHOPS.length; layout(); try{localStorage.setItem("crate.shops",String(active));}catch(e){} }
+  function go(i){ active=(i+SHOPS.length)%SHOPS.length; layout(); }
   document.getElementById("deck-prev").addEventListener("click",function(){go(active-1);});
   document.getElementById("deck-next").addEventListener("click",function(){go(active+1);});
   deck.addEventListener("keydown",function(e){ if(e.key==="ArrowRight"){go(active+1);e.preventDefault();} else if(e.key==="ArrowLeft"){go(active-1);e.preventDefault();} });
   var x0=null, swiped=false; deck.addEventListener("pointerdown",function(e){x0=e.clientX;});
   deck.addEventListener("pointerup",function(e){ if(x0===null) return; var dx=e.clientX-x0; x0=null; if(Math.abs(dx)>40){ swiped=true; setTimeout(function(){swiped=false;},350); go(active+(dx<0?1:-1)); } });
   window.addEventListener("resize",layout);
-  try{ var saved=parseInt(localStorage.getItem("crate.shops")||"0",10); if(saved>=0&&saved<SHOPS.length) active=saved; }catch(e){}
-  go(active);
+  go(0);
 })();
 </script>
 <script src="site.js?v=7"></script>
