@@ -63,3 +63,36 @@ var SUPPORT_EMAIL = "support@cratemusicapp.com";
     });
   });
 })();
+
+// Every screenshot opens full size: click it, then click anywhere or press Esc.
+// Pictures carry their dark copy, so the one shown is the one on the page.
+(function () {
+  var shots = [].filter.call(document.querySelectorAll("img"), function (img) {
+    var w = parseInt(img.getAttribute("width") || "0", 10);
+    return w >= 500 && !img.closest("#deck, .store-badge, .brand, a, button");
+  });
+  if (!shots.length) return;
+  var box = document.createElement("div");
+  box.className = "zoom"; box.hidden = true;
+  box.setAttribute("role", "dialog"); box.setAttribute("aria-modal", "true"); box.setAttribute("aria-label", "Screenshot, full size");
+  var big = document.createElement("img"); big.alt = "";
+  var close = document.createElement("button"); close.type = "button"; close.className = "zoom-close"; close.textContent = "Close";
+  box.appendChild(big); box.appendChild(close); document.body.appendChild(box);
+  var last = null;
+  function open(img) {
+    last = img; big.src = img.currentSrc || img.src; big.alt = img.alt || "";
+    box.hidden = false; document.documentElement.classList.add("zoomed"); close.focus();
+  }
+  function shut() {
+    box.hidden = true; document.documentElement.classList.remove("zoomed");
+    if (last) { try { last.focus({ preventScroll: true }); } catch (e) {} }
+  }
+  shots.forEach(function (img) {
+    img.classList.add("zoomable"); img.tabIndex = 0;
+    img.setAttribute("role", "button");
+    img.addEventListener("click", function () { open(img); });
+    img.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(img); } });
+  });
+  box.addEventListener("click", shut);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !box.hidden) shut(); });
+})();
