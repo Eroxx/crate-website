@@ -2,7 +2,7 @@
 // is live, paste its App Store URL (https://apps.apple.com/...) between the quotes and publish:
 // every [data-store-live] element (Apple's official badge) appears, linked to it, and every
 // [data-store-soon] element ("Coming to the App Store" and the like) disappears.
-var APP_STORE = "";
+var APP_STORE = "https://apps.apple.com/us/app/crate-music-library/id6814223022";
 
 // The public TestFlight link, for as long as there is a beta. Every [data-beta]
 // element is wired to it, and the day APP_STORE is filled in they all disappear:
