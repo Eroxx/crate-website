@@ -77,6 +77,7 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,4.6vw,58px);l
 .devices .phone.moving{flex:0 1 33%;height:auto;display:block}
 .devices.two-phones .phone{flex:0 1 44%}
 .devices.solo .pad{flex:0 1 92%}
+.devices video.pad{height:auto;display:block}
 
 /* Clerk request card */
 .ask{margin-top:24px;background:var(--paper);border:1px solid var(--rule);border-radius:18px;padding:18px}
