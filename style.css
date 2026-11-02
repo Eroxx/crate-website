@@ -3,8 +3,8 @@
   --paper:#F4EDE1; --card:#FCF8F1; --ink:#2A211B; --ink-2:#6B5B4E; --rule:#E2D6C4;
   --accent:#C42C5E; --accent-ink:#FFFFFF; --mustard:#D99A1B; --plinth:#3A2E26; --plinth-ink:#F4EDE1;
   --tab:#E9B94A; --tab-ink:#2A211B; --glow:rgba(196,44,94,.10);
-  --display:"DM Serif Display", "New York", "Iowan Old Style", Georgia, serif;
-  --body:"Instrument Sans", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --display:"DM Serif Display", Georgia, serif;
+  --body:"Instrument Sans", Arial, sans-serif;
   --mono:"JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --wrap:1180px;
 }

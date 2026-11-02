@@ -20,8 +20,9 @@
 <title>Crate Music Library</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=17">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"></noscript>
+<link rel="stylesheet" href="style.css?v=19">
 <style>
 /* App Store badge (store.js). Apple: 40px minimum height, clear space a quarter of its height,
    never recolored or altered. */
@@ -42,7 +43,8 @@
     </nav>
   </header>
 
-  <section class="hero" id="top">
+  <main style="display:contents">
+<section class="hero" id="top">
     <div>
       <div class="label">Crate Music Library · iPhone &amp; iPad</div>
       <h1>Your music is personal. <em>Your app should be too.</em></h1>
@@ -50,20 +52,20 @@
       <div class="pills">
         <a class="pill solid" data-beta hidden href="#" aria-label="Try the Crate beta, free on TestFlight"><svg class="tf-mark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M21.9 2.1 2.6 9.9l6.6 2.6z"/><path fill="currentColor" d="M22.6 2.8 9.9 13.1l4.9 8.6z"/><path fill="currentColor" opacity=".5" d="M9.9 13.9v4.6l2.6-3z"/></svg>Try the beta, free on TestFlight</a>
         <span class="pill" data-store-soon><span class="dot"></span>Coming soon to the App Store</span>
-        <a class="store-badge" data-store-live hidden href="#" aria-label="Download Crate on the App Store"><picture><source srcset="img/app-store-badge-white.svg" media="(prefers-color-scheme: dark)"><img src="img/app-store-badge-black.svg" alt="Download on the App Store" width="132" height="44"></picture></a>
+        <a class="store-badge" data-store-live hidden href="#" aria-label="Download Crate on the App Store"><picture><source srcset="img/app-store-badge-white.svg" media="(prefers-color-scheme: dark)"><img decoding="async" src="img/app-store-badge-black.svg" alt="Download on the App Store" width="132" height="44"></picture></a>
         <span class="pill">For Apple Music</span>
         <a class="pill discord" data-discord href="support.html#community"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.6 1.3a18.4 18.4 0 0 0-5.6 0L8.6 3a19.7 19.7 0 0 0-4.9 1.5C.6 9.1-.3 13.6.1 18.1a19.9 19.9 0 0 0 6 3l1.3-2.1a12.9 12.9 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12.2 0l.5.4a12.9 12.9 0 0 1-2.1 1l1.3 2.1a19.8 19.8 0 0 0 6-3c.5-5.2-.8-9.7-3.5-13.7ZM8.3 15.3c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Zm7.4 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Z"/></svg>Join the Discord</a>
       </div>
     </div>
     <div class="hero-art">
-      <picture><source srcset="img/ipad-home-dark.webp" media="(prefers-color-scheme: dark)"><img class="pad" src="img/ipad-home.webp" width="1100" height="1435" alt="Crate on iPad: Home with Album of the Day and The Friday Box, beside the sidebar of every room and your mixtapes and playlists"></picture>
-      <picture><source srcset="img/iphone-home-dark.webp" media="(prefers-color-scheme: dark)"><img class="phone" src="img/iphone-home.webp" width="560" height="1143" alt="Crate on iPhone: Good morning, with albums to pick up where you left off and today's Album of the Day"></picture>
+      <picture><source srcset="img/small/ipad-home-dark-480.webp 480w, img/small/ipad-home-dark-800.webp 800w" sizes="(max-width: 500px) 79vw, (max-width: 1000px) 82vw, 524px" media="(prefers-color-scheme: dark)"><img decoding="async" fetchpriority="high" class="pad" src="img/small/ipad-home-800.webp" srcset="img/small/ipad-home-480.webp 480w, img/small/ipad-home-800.webp 800w" sizes="(max-width: 500px) 79vw, (max-width: 1000px) 82vw, 524px" width="1100" height="1435" alt="Crate on iPad: Home with Album of the Day and The Friday Box, beside the sidebar of every room and your mixtapes and playlists"></picture>
+      <picture><source srcset="img/small/iphone-home-dark-480.webp 480w" sizes="(max-width: 500px) 40vw, (max-width: 1000px) 32vw, 207px" media="(prefers-color-scheme: dark)"><img decoding="async" class="phone" src="img/small/iphone-home-480.webp" srcset="img/small/iphone-home-480.webp 480w" sizes="(max-width: 500px) 40vw, (max-width: 1000px) 32vw, 207px" width="560" height="1143" alt="Crate on iPhone: Good morning, with albums to pick up where you left off and today's Album of the Day"></picture>
     </div>
   </section>
   <figure class="reel">
-    <video id="reel" data-themed="crate-dig" autoplay muted loop playsinline preload="metadata" width="1400" height="1074"
+    <video id="reel" data-themed="crate-dig" autoplay muted loop playsinline preload="none" width="1400" height="1074"
            poster="img/crate-dig-poster.webp" aria-label="Crates on iPad: today's crates, then digging through one, each album coming out with why it's there, one kept and the next put back">
-      <source src="img/crate-dig.mp4" type="video/mp4">
+      <!-- film set by site.js as it comes on screen -->
     </video>
     <figcaption>Digging a crate on iPad: each album comes out with why it's in the crate and thirty seconds of it playing. Keep it or put it back.</figcaption>
   </figure>
@@ -78,8 +80,8 @@
         <p class="soft">Start digging and each album comes out to face you, with why it's in the crate and thirty seconds of it playing. Keep it or put it back. Or just listen: flip through one song from each album, hear three from each and then the next three, or play them whole.</p>
       </div>
       <div class="devices">
-        <picture><source srcset="img/ipad-crates-dark.webp" media="(prefers-color-scheme: dark)"><img class="pad" src="img/ipad-crates.webp" width="1100" height="1435" loading="lazy" alt="Crates on iPad: Night in the Title at the top of the pile, every album with Night in its title fanned under a hand-lettered divider card, with more crates below"></picture>
-        <picture><source srcset="img/iphone-cratedig-dark.webp" media="(prefers-color-scheme: dark)"><img class="phone" src="img/iphone-cratedig.webp" width="560" height="1143" loading="lazy" alt="Digging through a crate on iPhone: Sonny Rollins' A Night at the Village Vanguard pulled out, with why it's in the crate, thirty seconds playing, and Keep or Put It Back"></picture>
+        <picture><source srcset="img/small/ipad-crates-dark-480.webp 480w, img/small/ipad-crates-dark-800.webp 800w" sizes="(max-width: 500px) 52vw, (max-width: 1000px) 59vw, 332px" media="(prefers-color-scheme: dark)"><img decoding="async" class="pad" src="img/small/ipad-crates-800.webp" srcset="img/small/ipad-crates-480.webp 480w, img/small/ipad-crates-800.webp 800w" sizes="(max-width: 500px) 52vw, (max-width: 1000px) 59vw, 332px" width="1100" height="1435" loading="lazy" alt="Crates on iPad: Night in the Title at the top of the pile, every album with Night in its title fanned under a hand-lettered divider card, with more crates below"></picture>
+        <picture><source srcset="img/small/iphone-cratedig-dark-480.webp 480w" sizes="(max-width: 500px) 19vw, (max-width: 1000px) 21vw, 120px" media="(prefers-color-scheme: dark)"><img decoding="async" class="phone" src="img/small/iphone-cratedig-480.webp" srcset="img/small/iphone-cratedig-480.webp 480w" sizes="(max-width: 500px) 19vw, (max-width: 1000px) 21vw, 120px" width="560" height="1143" loading="lazy" alt="Digging through a crate on iPhone: Sonny Rollins' A Night at the Village Vanguard pulled out, with why it's in the crate, thirty seconds playing, and Keep or Put It Back"></picture>
       </div>
     </div>
   </section>
@@ -97,8 +99,8 @@
         </ul>
       </div>
       <div class="devices two-phones">
-        <picture><source srcset="img/iphone-clerk-dark.webp" media="(prefers-color-scheme: dark)"><img class="phone" src="img/iphone-clerk.webp" width="560" height="1145" alt="The Clerk on iPhone reading a request into the parts 80s, sad and songs under five minutes"></picture>
-        <picture><source srcset="img/iphone-clerk-list-dark.webp" media="(prefers-color-scheme: dark)"><img class="phone" src="img/iphone-clerk-list.webp" width="560" height="1145" alt="The Clerk's list on iPhone, each song with its mood and year, and Why, Swap, Keep and Remove"></picture>
+        <picture><source srcset="img/small/iphone-clerk-dark-480.webp 480w" sizes="(max-width: 500px) 35vw, (max-width: 1000px) 38vw, 222px" media="(prefers-color-scheme: dark)"><img decoding="async" loading="lazy" class="phone" src="img/small/iphone-clerk-480.webp" srcset="img/small/iphone-clerk-480.webp 480w" sizes="(max-width: 500px) 35vw, (max-width: 1000px) 38vw, 222px" width="560" height="1145" alt="The Clerk on iPhone reading a request into the parts 80s, sad and songs under five minutes"></picture>
+        <picture><source srcset="img/small/iphone-clerk-list-dark-480.webp 480w" sizes="(max-width: 500px) 35vw, (max-width: 1000px) 38vw, 222px" media="(prefers-color-scheme: dark)"><img decoding="async" loading="lazy" class="phone" src="img/small/iphone-clerk-list-480.webp" srcset="img/small/iphone-clerk-list-480.webp 480w" sizes="(max-width: 500px) 35vw, (max-width: 1000px) 38vw, 222px" width="560" height="1145" alt="The Clerk's list on iPhone, each song with its mood and year, and Why, Swap, Keep and Remove"></picture>
       </div>
     </div>
       <div class="counter">
@@ -120,10 +122,10 @@
         <p class="soft">Hear thirty seconds of every track, then sort the delivery: Add to Library, Later, or Not for Me. Coming Soon is a wall calendar of the albums your artists have announced.</p>
       </div>
       <div class="devices">
-        <picture><source srcset="img/ipad-fridaybox-dark.webp" media="(prefers-color-scheme: dark)"><img class="pad" src="img/ipad-fridaybox.webp" width="1100" height="1435" loading="lazy" alt="The Friday Box on iPad: this week's new albums standing in an open box, the front one lifted out, with why it's in the box and a listening post"></picture>
-        <video class="phone moving" data-themed="fridaybox-loop" autoplay muted loop playsinline preload="metadata" width="560" height="1142"
+        <picture><source srcset="img/small/ipad-fridaybox-dark-480.webp 480w, img/small/ipad-fridaybox-dark-800.webp 800w" sizes="(max-width: 500px) 51vw, (max-width: 1000px) 56vw, 322px" media="(prefers-color-scheme: dark)"><img decoding="async" class="pad" src="img/small/ipad-fridaybox-800.webp" srcset="img/small/ipad-fridaybox-480.webp 480w, img/small/ipad-fridaybox-800.webp 800w" sizes="(max-width: 500px) 51vw, (max-width: 1000px) 56vw, 322px" width="1100" height="1435" loading="lazy" alt="The Friday Box on iPad: this week's new albums standing in an open box, the front one lifted out, with why it's in the box and a listening post"></picture>
+        <video class="phone moving" data-themed="fridaybox-loop" autoplay muted loop playsinline preload="none" width="560" height="1142"
                poster="img/fridaybox-loop-poster.webp" aria-label="The Friday Box on iPhone, going through this week's seven albums one after another, each lifted out of the box with the reasons it was picked">
-          <source src="img/fridaybox-loop.mp4" type="video/mp4">
+          <!-- film set by site.js as it comes on screen -->
         </video>
       </div>
     </div>
@@ -144,8 +146,8 @@
         <p class="soft">Another Version takes a different road with different songs, as often as you like, and the Road Trip widget carries on from where you stopped.</p>
       </div>
       <div class="devices two-phones">
-        <picture><source srcset="img/iphone-roadtrip-tour-dark.webp" media="(prefers-color-scheme: dark)"><img class="phone" src="img/iphone-roadtrip-tour.webp" width="560" height="1143" loading="lazy" alt="The Tour Bus on iPhone: Athens to Seattle on a map, stopping in towns along the way, with the albums from each"></picture>
-        <picture><source srcset="img/iphone-roadtrip-years-dark.webp" media="(prefers-color-scheme: dark)"><img class="phone" src="img/iphone-roadtrip-years.webp" width="560" height="1143" loading="lazy" alt="Ride the Years on iPhone: 1960 to 1969, two songs a year, with how many of your albums are from each year and their covers"></picture>
+        <picture><source srcset="img/small/iphone-roadtrip-tour-dark-480.webp 480w" sizes="(max-width: 500px) 35vw, (max-width: 1000px) 38vw, 222px" media="(prefers-color-scheme: dark)"><img decoding="async" class="phone" src="img/small/iphone-roadtrip-tour-480.webp" srcset="img/small/iphone-roadtrip-tour-480.webp 480w" sizes="(max-width: 500px) 35vw, (max-width: 1000px) 38vw, 222px" width="560" height="1143" loading="lazy" alt="The Tour Bus on iPhone: Athens to Seattle on a map, stopping in towns along the way, with the albums from each"></picture>
+        <picture><source srcset="img/small/iphone-roadtrip-years-dark-480.webp 480w" sizes="(max-width: 500px) 35vw, (max-width: 1000px) 38vw, 222px" media="(prefers-color-scheme: dark)"><img decoding="async" class="phone" src="img/small/iphone-roadtrip-years-480.webp" srcset="img/small/iphone-roadtrip-years-480.webp 480w" sizes="(max-width: 500px) 35vw, (max-width: 1000px) 38vw, 222px" width="560" height="1143" loading="lazy" alt="Ride the Years on iPhone: 1960 to 1969, two songs a year, with how many of your albums are from each year and their covers"></picture>
       </div>
     </div>
   </section>
@@ -159,8 +161,8 @@
         <p class="soft">On the Tour Bus, every town you reach sends a postcard with its picture, and they pile up on the trip to flip through.</p>
       </div>
       <div class="devices two-phones">
-        <picture><source srcset="img/iphone-popup-dark.webp" media="(prefers-color-scheme: dark)"><img class="phone" src="img/iphone-popup.webp" width="560" height="1143" loading="lazy" alt="Now Playing on iPhone: Big Shot by Billy Joel, with a Pop-Up Fact over the album about the song Rosalinda's Eyes"></picture>
-        <picture><source srcset="img/iphone-postcard-dark.webp" media="(prefers-color-scheme: dark)"><img class="phone" src="img/iphone-postcard.webp" width="560" height="1143" loading="lazy" alt="A postcard from Memphis on the Tour Bus, over Now Playing"></picture>
+        <picture><source srcset="img/small/iphone-popup-dark-480.webp 480w" sizes="(max-width: 500px) 35vw, (max-width: 1000px) 38vw, 222px" media="(prefers-color-scheme: dark)"><img decoding="async" class="phone" src="img/small/iphone-popup-480.webp" srcset="img/small/iphone-popup-480.webp 480w" sizes="(max-width: 500px) 35vw, (max-width: 1000px) 38vw, 222px" width="560" height="1143" loading="lazy" alt="Now Playing on iPhone: Big Shot by Billy Joel, with a Pop-Up Fact over the album about the song Rosalinda's Eyes"></picture>
+        <picture><source srcset="img/small/iphone-postcard-dark-480.webp 480w" sizes="(max-width: 500px) 35vw, (max-width: 1000px) 38vw, 222px" media="(prefers-color-scheme: dark)"><img decoding="async" class="phone" src="img/small/iphone-postcard-480.webp" srcset="img/small/iphone-postcard-480.webp 480w" sizes="(max-width: 500px) 35vw, (max-width: 1000px) 38vw, 222px" width="560" height="1143" loading="lazy" alt="A postcard from Memphis on the Tour Bus, over Now Playing"></picture>
       </div>
     </div>
   </section>
@@ -175,8 +177,8 @@
         <p class="soft">Every tape gets a painted cover and a label in your hand. Pick how long the tape is, from 46 minutes to two hours, and it splits into Side A and Side B, with a printed insert of liner notes. Crate can also copy it into the Music app as an ordinary playlist, so it follows you to every Apple device and the car.</p>
       </div>
       <div class="devices">
-        <picture><source srcset="img/ipad-mixtapes-dark.webp" media="(prefers-color-scheme: dark)"><img class="pad" src="img/ipad-mixtapes.webp" width="1100" height="1435" alt="The Mixtapes room on iPad: a painted bedroom with a tape deck and cassettes on the shelf, above your mixtapes and playlists"></picture>
-        <picture><source srcset="img/iphone-mixtapes-dark.webp" media="(prefers-color-scheme: dark)"><img class="phone" src="img/iphone-mixtapes.webp" width="560" height="1143" alt="Mixtapes and playlists on iPhone: Recently Added and Forgotten Favorites on tape, Road Songs on a burned disc, and The '90s"></picture>
+        <picture><source srcset="img/small/ipad-mixtapes-dark-480.webp 480w, img/small/ipad-mixtapes-dark-800.webp 800w" sizes="(max-width: 500px) 52vw, (max-width: 1000px) 59vw, 332px" media="(prefers-color-scheme: dark)"><img decoding="async" loading="lazy" class="pad" src="img/small/ipad-mixtapes-800.webp" srcset="img/small/ipad-mixtapes-480.webp 480w, img/small/ipad-mixtapes-800.webp 800w" sizes="(max-width: 500px) 52vw, (max-width: 1000px) 59vw, 332px" width="1100" height="1435" alt="The Mixtapes room on iPad: a painted bedroom with a tape deck and cassettes on the shelf, above your mixtapes and playlists"></picture>
+        <picture><source srcset="img/small/iphone-mixtapes-dark-480.webp 480w" sizes="(max-width: 500px) 19vw, (max-width: 1000px) 21vw, 120px" media="(prefers-color-scheme: dark)"><img decoding="async" loading="lazy" class="phone" src="img/small/iphone-mixtapes-480.webp" srcset="img/small/iphone-mixtapes-480.webp 480w" sizes="(max-width: 500px) 19vw, (max-width: 1000px) 21vw, 120px" width="560" height="1143" alt="Mixtapes and playlists on iPhone: Recently Added and Forgotten Favorites on tape, Road Songs on a burned disc, and The '90s"></picture>
       </div>
     </div>
   </section>
@@ -190,9 +192,9 @@
         <p>Then write on the sleeve. A note of your own, in your own words: where you first heard it, which side to start with, who it reminds you of. It shows on the album everywhere, travels to your other devices through iCloud, and mixtapes can pick songs by what you wrote.</p>
       </div>
       <div class="devices three-phones">
-        <img class="phone" src="img/iphone-liner.webp" width="560" height="1145" loading="lazy" alt="Liner notes for Pet Sounds on iPhone: the album, your handwritten note, and sides for the story, credits, and you and this album">
-        <img class="phone" src="img/iphone-liner2.webp" width="560" height="1145" loading="lazy" alt="Side A of the liner notes: the story of Pet Sounds, from Wikipedia">
-        <img class="phone" src="img/iphone-note.webp" width="560" height="1145" loading="lazy" alt="Pet Sounds on iPhone with a note written on the sleeve: Headphones, lights off, side two first">
+        <img decoding="async" class="phone" src="img/small/iphone-liner-480.webp" srcset="img/small/iphone-liner-480.webp 480w" sizes="(max-width: 500px) 25vw, (max-width: 1000px) 27vw, 156px" width="560" height="1145" loading="lazy" alt="Liner notes for Pet Sounds on iPhone: the album, your handwritten note, and sides for the story, credits, and you and this album">
+        <img decoding="async" class="phone" src="img/small/iphone-liner2-480.webp" srcset="img/small/iphone-liner2-480.webp 480w" sizes="(max-width: 500px) 25vw, (max-width: 1000px) 27vw, 156px" width="560" height="1145" loading="lazy" alt="Side A of the liner notes: the story of Pet Sounds, from Wikipedia">
+        <img decoding="async" class="phone" src="img/small/iphone-note-480.webp" srcset="img/small/iphone-note-480.webp 480w" sizes="(max-width: 500px) 25vw, (max-width: 1000px) 27vw, 156px" width="560" height="1145" loading="lazy" alt="Pet Sounds on iPhone with a note written on the sleeve: Headphones, lights off, side two first">
       </div>
     </div>
   </section>
@@ -211,8 +213,8 @@
         <p class="soft">They follow you: stop an album on your iPhone and it's waiting in your iPad's sidebar, and on CarPlay when you get in the car.</p>
       </div>
       <div class="devices">
-        <picture><source srcset="img/ipad-pickup-dark.webp" media="(prefers-color-scheme: dark)"><img class="pad" src="img/ipad-pickup.webp" width="1100" height="1435" loading="lazy" alt="Crate on iPad with Pick Up in the sidebar: the same five albums"></picture>
-        <img class="phone" src="img/iphone-pickup.webp" width="560" height="1145" loading="lazy" alt="Pick Up Where You Left Off on iPhone: While You Weren't Looking, next up song 2; Wild Honey, 0:04 into song 1">
+        <picture><source srcset="img/small/ipad-pickup-dark-480.webp 480w, img/small/ipad-pickup-dark-800.webp 800w" sizes="(max-width: 500px) 55vw, (max-width: 1000px) 60vw, 345px" media="(prefers-color-scheme: dark)"><img decoding="async" class="pad" src="img/small/ipad-pickup-800.webp" srcset="img/small/ipad-pickup-480.webp 480w, img/small/ipad-pickup-800.webp 800w" sizes="(max-width: 500px) 55vw, (max-width: 1000px) 60vw, 345px" width="1100" height="1435" loading="lazy" alt="Crate on iPad with Pick Up in the sidebar: the same five albums"></picture>
+        <img decoding="async" class="phone" src="img/small/iphone-pickup-480.webp" srcset="img/small/iphone-pickup-480.webp 480w" sizes="(max-width: 500px) 20vw, (max-width: 1000px) 22vw, 124px" width="560" height="1145" loading="lazy" alt="Pick Up Where You Left Off on iPhone: While You Weren't Looking, next up song 2; Wild Honey, 0:04 into song 1">
       </div>
     </div>
   </section>
@@ -225,7 +227,7 @@
     </div>
     <div class="duo-poses">
       <figure class="pose tall">
-        <div class="device"><div class="duo-frame"><img src="img/duo-closed.webp" width="700" height="1018" alt="Crate on the closed iPhone Duo: Home at full height, with Up Next, Pick Up and Album of the Day" loading="lazy"></div></div>
+        <div class="device"><div class="duo-frame"><img decoding="async" src="img/small/duo-closed-480.webp" srcset="img/small/duo-closed-480.webp 480w" sizes="(max-width: 500px) 47vw, (max-width: 1000px) 51vw, 182px" width="700" height="1018" alt="Crate on the closed iPhone Duo: Home at full height, with Up Next, Pick Up and Album of the Day" loading="lazy"></div></div>
         <figcaption><b>Closed</b><span>The outer screen keeps your music at full height, with the controls in the side strip.</span></figcaption>
       </figure>
       <figure class="pose">
@@ -233,7 +235,7 @@
         <figcaption><b>Half-folded, like a book</b><span>The album on one page, its liner notes on the other, meeting at the crease.</span></figcaption>
       </figure>
       <figure class="pose wide">
-        <div class="device"><div class="duo-frame"><img src="img/duo-open.webp" width="1500" height="1055" alt="Crate on the open iPhone Duo: the sidebar beside a shelf of albums" loading="lazy"></div></div>
+        <div class="device"><div class="duo-frame"><img decoding="async" src="img/small/duo-open-800.webp" srcset="img/small/duo-open-480.webp 480w, img/small/duo-open-800.webp 800w, img/small/duo-open-1200.webp 1200w" sizes="(max-width: 500px) 79vw, (max-width: 1000px) 85vw, 376px" width="1500" height="1055" alt="Crate on the open iPhone Duo: the sidebar beside a shelf of albums" loading="lazy"></div></div>
         <figcaption><b>Open</b><span>A two-column app: your shelves beside the sidebar, the way they are on iPad.</span></figcaption>
       </figure>
     </div>
@@ -244,7 +246,7 @@
         <figcaption><b>Half-folded, set down</b><span>Lay the bottom half on the table: the album plays above the fold, and its liner notes and story sit on the half below.</span></figcaption>
       </figure>
       <figure class="pose upright">
-        <div class="device"><div class="duo-frame"><img src="img/duo-upright.webp" width="900" height="1280" alt="Crate on the open iPhone Duo held upright: a grid of album covers" loading="lazy"></div></div>
+        <div class="device"><div class="duo-frame"><img decoding="async" src="img/small/duo-upright-800.webp" srcset="img/small/duo-upright-480.webp 480w, img/small/duo-upright-800.webp 800w" sizes="(max-width: 500px) 47vw, (max-width: 1000px) 51vw, 186px" width="900" height="1280" alt="Crate on the open iPhone Duo held upright: a grid of album covers" loading="lazy"></div></div>
         <figcaption><b>Open, held upright</b><span>A page of covers the size of a paperback, three across.</span></figcaption>
       </figure>
     </div>
@@ -259,8 +261,8 @@
         <p class="soft">"You have 30 of their 54 studio albums." Crate checks MusicBrainz so a live album isn't filed as a studio one, and a soundtrack with one of their songs on it isn't counted as theirs.</p>
       </div>
       <div class="devices">
-        <picture><source srcset="img/ipad-artist-dark.webp" media="(prefers-color-scheme: dark)"><img class="pad" src="img/ipad-artist.webp" width="1100" height="1435" alt="The Genesis artist page on iPad with rows of Albums and Live albums, some marked In Your Library and others with an Add button"></picture>
-        <picture><source srcset="img/iphone-artist-dark.webp" media="(prefers-color-scheme: dark)"><img class="phone" src="img/iphone-artist.webp" width="560" height="1145" alt="The Neil Young artist page on iPhone: You have 30 of their 54 studio albums"></picture>
+        <picture><source srcset="img/small/ipad-artist-dark-480.webp 480w, img/small/ipad-artist-dark-800.webp 800w" sizes="(max-width: 500px) 52vw, (max-width: 1000px) 59vw, 332px" media="(prefers-color-scheme: dark)"><img decoding="async" loading="lazy" class="pad" src="img/small/ipad-artist-800.webp" srcset="img/small/ipad-artist-480.webp 480w, img/small/ipad-artist-800.webp 800w" sizes="(max-width: 500px) 52vw, (max-width: 1000px) 59vw, 332px" width="1100" height="1435" alt="The Genesis artist page on iPad with rows of Albums and Live albums, some marked In Your Library and others with an Add button"></picture>
+        <picture><source srcset="img/small/iphone-artist-dark-480.webp 480w" sizes="(max-width: 500px) 19vw, (max-width: 1000px) 21vw, 120px" media="(prefers-color-scheme: dark)"><img decoding="async" loading="lazy" class="phone" src="img/small/iphone-artist-480.webp" srcset="img/small/iphone-artist-480.webp 480w" sizes="(max-width: 500px) 19vw, (max-width: 1000px) 21vw, 120px" width="560" height="1145" alt="The Neil Young artist page on iPhone: You have 30 of their 54 studio albums"></picture>
       </div>
     </div>
   </section>
@@ -279,8 +281,8 @@
         <p class="soft">The Mixtape widget is a cassette in the tape's own colour; hold it to choose which tape. Pick Up, Now Playing and the Road Trip you’re on are there too.</p>
       </div>
       <div class="devices two-phones">
-        <img class="phone" src="img/iphone-widgets.webp" width="560" height="1143" loading="lazy" alt="Crate's widgets on an iPhone home screen: Album of the Day (Miles Davis at Fillmore) with Drop the Needle, Top of the Pile (Night in the Title) with Play a Mix, the Recently Added mixtape as a cassette with Play, and Right Now (Monday Morning)">
-        <img class="phone" src="img/iphone-widgets-dark.webp" width="560" height="1143" loading="lazy" alt="The same widgets on a dark home screen">
+        <img decoding="async" class="phone" src="img/small/iphone-widgets-480.webp" srcset="img/small/iphone-widgets-480.webp 480w" sizes="(max-width: 500px) 37vw, (max-width: 1000px) 38vw, 222px" width="560" height="1143" loading="lazy" alt="Crate's widgets on an iPhone home screen: Album of the Day (Miles Davis at Fillmore) with Drop the Needle, Top of the Pile (Night in the Title) with Play a Mix, the Recently Added mixtape as a cassette with Play, and Right Now (Monday Morning)">
+        <img decoding="async" class="phone" src="img/small/iphone-widgets-dark-480.webp" srcset="img/small/iphone-widgets-dark-480.webp 480w" sizes="(max-width: 500px) 37vw, (max-width: 1000px) 38vw, 222px" width="560" height="1143" loading="lazy" alt="The same widgets on a dark home screen">
       </div>
     </div>
   </section>
@@ -319,9 +321,9 @@
         <p class="soft">For albums by artists you don't have yet, picked through the ones you do, there's <a href="#fridaybox">the Friday Box</a>.</p>
       </div>
       <div class="devices solo">
-        <video class="pad" data-themed="backroom-stand" autoplay muted loop playsinline preload="metadata" width="1400" height="1074"
+        <video class="pad" data-themed="backroom-stand" autoplay muted loop playsinline preload="none" width="1400" height="1074"
                poster="img/backroom-stand-poster.webp" aria-label="The Back Room on iPad: albums going onto the stand from the ledge of this week's reviews, then the players on your albums">
-          <source src="img/backroom-stand.mp4" type="video/mp4">
+          <!-- film set by site.js as it comes on screen -->
         </video>
       </div>
     </div>
@@ -342,8 +344,8 @@
         <p class="soft">A real library, as the screenshots show it. Crate starts from Apple Music's own play counts, keeps every play it sees as it goes, and Last.fm can fill in everything before.</p>
       </div>
       <div class="devices">
-        <picture><source srcset="img/ipad-stats-dark.webp" media="(prefers-color-scheme: dark)"><img class="pad" src="img/ipad-stats.webp" width="1100" height="1435" alt="Stats on iPad: all eighteen sleeves, from a crate of albums for Overview and a waveform of song lengths down to the people on your albums, a mood map, the seasons, your next milestone and the albums you kept from crates"></picture>
-        <picture><source srcset="img/iphone-listening-dark.webp" media="(prefers-color-scheme: dark)"><img class="phone" src="img/iphone-listening.webp" width="560" height="1145" alt="Every Play on iPhone: 2026, then September, then Monday the 21st with each song and the time it was played"></picture>
+        <picture><source srcset="img/small/ipad-stats-dark-480.webp 480w, img/small/ipad-stats-dark-800.webp 800w" sizes="(max-width: 500px) 52vw, (max-width: 1000px) 59vw, 332px" media="(prefers-color-scheme: dark)"><img decoding="async" loading="lazy" class="pad" src="img/small/ipad-stats-800.webp" srcset="img/small/ipad-stats-480.webp 480w, img/small/ipad-stats-800.webp 800w" sizes="(max-width: 500px) 52vw, (max-width: 1000px) 59vw, 332px" width="1100" height="1435" alt="Stats on iPad: all eighteen sleeves, from a crate of albums for Overview and a waveform of song lengths down to the people on your albums, a mood map, the seasons, your next milestone and the albums you kept from crates"></picture>
+        <picture><source srcset="img/small/iphone-listening-dark-480.webp 480w" sizes="(max-width: 500px) 19vw, (max-width: 1000px) 21vw, 120px" media="(prefers-color-scheme: dark)"><img decoding="async" loading="lazy" class="phone" src="img/small/iphone-listening-480.webp" srcset="img/small/iphone-listening-480.webp 480w" sizes="(max-width: 500px) 19vw, (max-width: 1000px) 21vw, 120px" width="560" height="1145" alt="Every Play on iPhone: 2026, then September, then Monday the 21st with each song and the time it was played"></picture>
       </div>
     </div>
   </section>
@@ -357,20 +359,20 @@
       <p class="soft" style="max-width:40ch;margin:0;color:var(--ink-2)">Each look has its own colours and its own typeface, checked for contrast in light and dark. Or let Crate change look every day.</p>
     </div>
     <figure class="looks-reel">
-      <video data-themed="home-looks" autoplay muted loop playsinline preload="metadata" width="560" height="1144"
+      <video data-themed="home-looks" autoplay muted loop playsinline preload="none" width="560" height="1144"
              poster="img/home-looks-poster.webp" aria-label="Crate's Home on iPhone scrolling from top to bottom while the look changes: Record Shop, Jazz Club, Punk Zine, Soul Revue, Late Night, Industrial and New Age">
-        <source src="img/home-looks.mp4" type="video/mp4">
+        <!-- film set by site.js as it comes on screen -->
       </video>
       <figcaption>Home from top to bottom (Pick Up, Album of the Day, the Friday Box, Right Now, Crates, the Back Room and more), changing look as it goes.</figcaption>
     </figure>
     <div class="rack">
-      <figure><img src="img/iphone-home.webp" width="560" height="1143" alt="Record Shop look" loading="lazy"><figcaption><b>Record Shop</b><span>Cream paper, raspberry and mustard</span></figcaption></figure>
-      <figure><img src="img/iphone-look-jazzClub.webp" width="560" height="1145" alt="Jazz Club look in dark mode" loading="lazy"><figcaption><b>Jazz Club</b><span>Navy and brass, like an old sleeve</span></figcaption></figure>
-      <figure><img src="img/iphone-look-punkZine.webp" width="560" height="1145" alt="Punk Zine look" loading="lazy"><figcaption><b>Punk Zine</b><span>Photocopy black with a hot-pink tear</span></figcaption></figure>
-      <figure><img src="img/iphone-look-soulRevue.webp" width="560" height="1145" alt="Soul Revue look" loading="lazy"><figcaption><b>Soul Revue</b><span>Warm '70s orange, brown and gold</span></figcaption></figure>
-      <figure><img src="img/iphone-look-lateNight.webp" width="560" height="1145" alt="Late Night look in dark mode" loading="lazy"><figcaption><b>Late Night</b><span>Purple and teal, FM after midnight</span></figcaption></figure>
-      <figure><img src="img/iphone-look-industrial.webp" width="560" height="1145" alt="Industrial look in dark mode" loading="lazy"><figcaption><b>Industrial</b><span>Concrete, steel and hazard yellow</span></figcaption></figure>
-      <figure><img src="img/iphone-look-newAge.webp" width="560" height="1145" alt="New Age look" loading="lazy"><figcaption><b>New Age</b><span>Sage, sand and still water</span></figcaption></figure>
+      <figure><img decoding="async" src="img/small/iphone-home-480.webp" srcset="img/small/iphone-home-480.webp 480w" sizes="(max-width: 500px) 40vw, (max-width: 1000px) 32vw, 207px" width="560" height="1143" alt="Record Shop look" loading="lazy"><figcaption><b>Record Shop</b><span>Cream paper, raspberry and mustard</span></figcaption></figure>
+      <figure><img decoding="async" src="img/small/iphone-look-jazzClub-480.webp" srcset="img/small/iphone-look-jazzClub-480.webp 480w" sizes="(max-width: 500px) 40vw, (max-width: 1000px) 20vw, 137px" width="560" height="1145" alt="Jazz Club look in dark mode" loading="lazy"><figcaption><b>Jazz Club</b><span>Navy and brass, like an old sleeve</span></figcaption></figure>
+      <figure><img decoding="async" src="img/small/iphone-look-punkZine-480.webp" srcset="img/small/iphone-look-punkZine-480.webp 480w" sizes="(max-width: 500px) 40vw, (max-width: 1000px) 20vw, 137px" width="560" height="1145" alt="Punk Zine look" loading="lazy"><figcaption><b>Punk Zine</b><span>Photocopy black with a hot-pink tear</span></figcaption></figure>
+      <figure><img decoding="async" src="img/small/iphone-look-soulRevue-480.webp" srcset="img/small/iphone-look-soulRevue-480.webp 480w" sizes="(max-width: 500px) 40vw, (max-width: 1000px) 20vw, 137px" width="560" height="1145" alt="Soul Revue look" loading="lazy"><figcaption><b>Soul Revue</b><span>Warm '70s orange, brown and gold</span></figcaption></figure>
+      <figure><img decoding="async" src="img/small/iphone-look-lateNight-480.webp" srcset="img/small/iphone-look-lateNight-480.webp 480w" sizes="(max-width: 500px) 40vw, (max-width: 1000px) 20vw, 137px" width="560" height="1145" alt="Late Night look in dark mode" loading="lazy"><figcaption><b>Late Night</b><span>Purple and teal, FM after midnight</span></figcaption></figure>
+      <figure><img decoding="async" src="img/small/iphone-look-industrial-480.webp" srcset="img/small/iphone-look-industrial-480.webp 480w" sizes="(max-width: 500px) 40vw, (max-width: 1000px) 20vw, 137px" width="560" height="1145" alt="Industrial look in dark mode" loading="lazy"><figcaption><b>Industrial</b><span>Concrete, steel and hazard yellow</span></figcaption></figure>
+      <figure><img decoding="async" src="img/small/iphone-look-newAge-480.webp" srcset="img/small/iphone-look-newAge-480.webp 480w" sizes="(max-width: 500px) 40vw, (max-width: 1000px) 20vw, 137px" width="560" height="1145" alt="New Age look" loading="lazy"><figcaption><b>New Age</b><span>Sage, sand and still water</span></figcaption></figure>
     </div>
   </section>
 
@@ -411,9 +413,10 @@
     </div>
     <div class="pills more-cta">
       <a class="pill solid" data-beta hidden href="#" aria-label="Try the Crate beta, free on TestFlight"><svg class="tf-mark" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M21.9 2.1 2.6 9.9l6.6 2.6z"/><path fill="currentColor" d="M22.6 2.8 9.9 13.1l4.9 8.6z"/><path fill="currentColor" opacity=".5" d="M9.9 13.9v4.6l2.6-3z"/></svg>Try the beta, free on TestFlight</a>
-      <a class="store-badge" data-store-live hidden href="#" aria-label="Download Crate on the App Store"><picture><source srcset="img/app-store-badge-white.svg" media="(prefers-color-scheme: dark)"><img src="img/app-store-badge-black.svg" alt="Download on the App Store" width="132" height="44"></picture></a>
+      <a class="store-badge" data-store-live hidden href="#" aria-label="Download Crate on the App Store"><picture><source srcset="img/app-store-badge-white.svg" media="(prefers-color-scheme: dark)"><img decoding="async" src="img/app-store-badge-black.svg" alt="Download on the App Store" width="132" height="44"></picture></a>
     </div>
   </section>
+</main>
 
   <footer>
     <div><b>Crate</b><br>Crate Music Library for iPhone and iPad</div>
@@ -440,7 +443,7 @@
   var deck=document.getElementById("deck"), cap=document.getElementById("deck-caption"), count=document.getElementById("deck-count");
   if(!deck) return;
   var active=0, cards=[];
-  var sizer=new Image(); sizer.className="deck-sizer"; sizer.alt=""; sizer.src="img/wander-recordShop.webp"; sizer.width=1400; sizer.height=1073; deck.appendChild(sizer);
+  var sizer=new Image(); sizer.className="deck-sizer"; sizer.alt=""; sizer.src="img/small/wander-recordShop-800.webp"; sizer.width=1400; sizer.height=1073; deck.appendChild(sizer);
   SHOPS.forEach(function(l,i){
     var c=document.createElement("div"); c.className="card";
     var t=document.createElement("button"); t.type="button"; t.className="tab"; t.textContent=l.name;
@@ -449,7 +452,7 @@
     t.style.left=(2+i*13)+"%";
     t.addEventListener("click",function(e){e.stopPropagation(); go(i);});
     var img=new Image(); img.className="shot"; img.width=1400; img.height=1073; img.decoding="async";
-    img.src="img/wander-"+l.key+".webp";
+    img.src="img/small/wander-"+l.key+"-800.webp"; img.srcset="img/small/wander-"+l.key+"-800.webp 800w, img/wander-"+l.key+".webp 1400w"; img.sizes="(max-width: 700px) 90vw, 700px"; img.loading="lazy";
     img.alt="Wander on iPad in landscape: the "+l.name+" record shop, with five artists in the bin";
     img.addEventListener("click",function(){ if(swiped){swiped=false;return;} if(i===active) go(active+1 < SHOPS.length ? active+1 : 0); });
     c.appendChild(t); c.appendChild(img); deck.appendChild(c); cards.push({el:c});
@@ -484,7 +487,7 @@
   go(0);
 })();
 </script>
-<script src="site.js?v=8"></script>
+<script src="site.js?v=10"></script>
 <script src="store.js?v=2" defer></script>
 </body>
 </html>

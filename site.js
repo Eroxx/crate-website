@@ -17,17 +17,34 @@ var DISCORD = "https://discord.gg/QUtsNJUvNV";
   if (vids.length && window.matchMedia) {
     var mq = window.matchMedia("(prefers-color-scheme: dark)");
     var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // A poster loads as its film comes near; the film when it is on screen, and it rests off screen.
     var pick = function () {
       vids.forEach(function (v) {
+        if (!v._near) return;
         var base = "img/" + v.getAttribute("data-themed") + (mq.matches ? "-dark" : "");
-        if (v.currentSrc && v.currentSrc.indexOf(base + ".mp4") !== -1) return;
         v.poster = base + "-poster.webp";
+        if (!v._seen) return;
+        if (v.currentSrc && v.currentSrc.indexOf(base + ".mp4") !== -1) return;
         v.muted = true; v.src = base + ".mp4"; v.load();
         if (still) { v.removeAttribute("autoplay"); v.controls = true; return; }
         var p = v.play(); if (p && p.catch) p.catch(function () {});
       });
     };
-    pick();
+    if ("IntersectionObserver" in window) {
+      var near = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target._near = true; near.unobserve(e.target); pick(); } });
+      }, { rootMargin: "400px 0px" });
+      var seen = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          var v = e.target;
+          if (e.isIntersecting) {
+            if (!v._seen) { v._seen = v._near = true; pick(); }
+            else if (!still) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+          } else if (v._seen) { v.pause(); }
+        });
+      }, { threshold: 0.25 });
+      vids.forEach(function (v) { near.observe(v); seen.observe(v); });
+    } else { vids.forEach(function (v) { v._near = v._seen = true; }); pick(); }
     if (mq.addEventListener) mq.addEventListener("change", pick);
   }
 })();
@@ -80,7 +97,7 @@ var SUPPORT_EMAIL = "support@cratemusicapp.com";
   box.appendChild(big); box.appendChild(close); document.body.appendChild(box);
   var last = null;
   function open(img) {
-    last = img; big.src = img.currentSrc || img.src; big.alt = img.alt || "";
+    last = img; big.src = (img.currentSrc || img.src).replace(/small\/(.+)-\d+\.webp(\?.*)?$/, "$1." + (img.dataset.ext || "webp")); big.alt = img.alt || "";
     box.hidden = false; document.documentElement.classList.add("zoomed"); close.focus();
   }
   function shut() {
