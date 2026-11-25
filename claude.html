@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Connect Claude, Claude Code or Codex to Crate on your Mac: ask about your records, play them, rate them and make mixtapes from your own library.">
+<meta name="theme-color" content="#F4EDE1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15110E" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Use Crate with Claude · Crate Music Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="style.css?v=17">
+<style>
+  .doc pre{font-family:var(--mono);font-size:14px;line-height:1.5;background:var(--paper);border:1px solid var(--rule);border-radius:10px;padding:12px 14px;overflow-x:auto;white-space:pre}
+  .doc ol{padding-left:22px;display:grid;gap:8px}
+  .asks li{font-style:italic}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="index.html" aria-label="Crate Music Library home">
+      <span class="brand-mark" aria-hidden="true"></span><b>Crate</b>
+    </a>
+    <nav class="nav" aria-label="Pages">
+      <a href="index.html">Home</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a>
+    </nav>
+  </header>
+  <main class="doc">
+    <h1>Use Crate with Claude</h1>
+    <p class="lede">On a Mac, Claude and other AI apps like Codex can work with your Crate library. Ask in your own words, and they look up your records, play them, rate them and make mixtapes from your own songs.</p>
+
+    <section class="card-box">
+      <h2 style="margin-top:0">How it works</h2>
+      <p>Crate on the Mac is an MCP server, the standard way AI apps connect to other apps. Everything the AI app does goes through Crate, just as if you'd clicked it, so a mixtape it makes is saved, synced to your other devices and shown like one you made. Crate doesn't need to be open: the AI app starts it in the background when it's needed.</p>
+      <p style="margin-bottom:0">What the AI app reads from Crate (album names, your ratings, what you've played) goes to that app and its company, the same as anything you type to it. Crate itself still sends nothing to us. This works with Crate for Mac only; the iPhone and iPad apps don't have it.</p>
+    </section>
+
+    <h2>The easy way: copy it from Crate</h2>
+    <p>In Crate on your Mac, open Settings and choose <b>Use Crate with Claude</b>. It shows the setup for Claude, Claude Code and Codex with the right path for your copy of Crate already filled in, a Copy button for each, and whether an AI app has connected.</p>
+
+    <h2>Claude for Mac</h2>
+    <ol>
+      <li>In Claude, open Settings, then Developer, and click <b>Edit Config</b>.</li>
+      <li>Paste this into that file. If it already lists other servers, add only the <code>"crate"</code> part inside <code>"mcpServers"</code>.</li>
+    </ol>
+<pre>{
+  "mcpServers": {
+    "crate": {
+      "command": "/Applications/Crate.app/Contents/MacOS/Crate",
+      "args": ["--mcp"]
+    }
+  }
+}</pre>
+    <ol start="3">
+      <li>Save the file, quit Claude and open it again. Crate appears in its list of tools.</li>
+    </ol>
+
+    <h2>Claude Code</h2>
+    <p>Paste this into Terminal and press Return, then start a new Claude Code session.</p>
+<pre>claude mcp add --scope user crate -- "/Applications/Crate.app/Contents/MacOS/Crate" --mcp</pre>
+
+    <h2>Codex</h2>
+    <p>Paste this into Terminal and press Return.</p>
+<pre>codex mcp add crate -- "/Applications/Crate.app/Contents/MacOS/Crate" --mcp</pre>
+    <p>These lines assume Crate is in your Applications folder. If it's somewhere else, copy the setup from Crate's Settings instead.</p>
+
+    <h2>Things to ask</h2>
+    <ul class="asks">
+      <li>"What have I listened to most this week?"</li>
+      <li>"Which albums am I part-way through?"</li>
+      <li>"Who produced the album that's playing?"</li>
+      <li>"Make me a mixtape of '70s soul I've rated four stars or more, and play it."</li>
+      <li>"Find songs I've never played from the albums I added this year."</li>
+      <li>"Give this song five stars."</li>
+    </ul>
+
+    <h2>What it can do</h2>
+    <ul>
+      <li><b>Search</b> your albums, artists and songs, and read an album's songs, your star ratings, how often you've played it, and its liner notes when Crate has them.</li>
+      <li><b>See</b> what you added lately, what you're part-way through, what you've played over the last days, your crates and mixtapes, and what's playing now.</li>
+      <li><b>Play</b> an album, song, playlist or mixtape, pause, skip and go back.</li>
+      <li><b>Rate</b> albums and songs, from half a star to five.</li>
+      <li><b>Make mixtapes</b> from songs in your library, saved in Crate's Mixtapes in the order chosen.</li>
+    </ul>
+    <p>It can't delete anything, and it only ever picks songs you already have.</p>
+  </main>
+
+  <footer>
+    <div><b>Crate</b><br>Crate Music Library for iPhone, iPad and Mac</div>
+    <nav class="foot-links" aria-label="More">
+      <a href="index.html">Home</a>
+      <a href="support.html">Help &amp; Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+  </footer>
+</div>
+<script src="site.js?v=8"></script>
+</body>
+</html>
